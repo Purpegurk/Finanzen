@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finanzen · Saner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --bg:#F5F6FA;
+  --surf:#FFFFFF;
+  --border:#E4E7EF;
+  --border2:#CDD2E0;
+  --ink:#111318;
+  --ink2:#6B7385;
+  --ink3:#A8AEBE;
+  --em:#00BF89;
+  --em-d:rgba(0,191,137,.10);
+  --red:#E84646;
+  --red-d:rgba(232,70,70,.09);
+  --amber:#F0A020;
+  --amber-d:rgba(240,160,32,.10);
+  --blue:#3B7EFF;
+  --sb:210px;
+  --r:10px;
+  --sans:'DM Sans',sans-serif;
+  --mono:'DM Mono',monospace;
+  --tr:.15s ease;
+}
+[data-dark]{
+  --bg:#0E1018;--surf:#161A27;--border:#1E2336;--border2:#2A3050;
+  --ink:#EDF0F8;--ink2:#7A839A;--ink3:#3E4660;
+}
+
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);min-height:100vh;display:flex;font-size:14px;line-height:1.5;transition:background var(--tr),color var(--tr)}
+
+/* SIDEBAR */
+.sb{width:var(--sb);min-height:100vh;background:var(--surf);border-right:1px solid var(--border);position:fixed;left:0;top:0;display:flex;flex-direction:column;z-index:50;transition:background var(--tr),border-color var(--tr)}
+.sb-brand{padding:24px 18px 20px;border-bottom:1px solid var(--border)}
+.sb-brand-name{font-size:13px;font-weight:600;letter-spacing:-.01em}
+.sb-brand-sub{font-size:11px;color:var(--ink3);margin-top:2px}
+.sb-nav{flex:1;padding:10px 8px;display:flex;flex-direction:column;gap:1px}
+.ni{display:flex;align-items:center;gap:9px;padding:8px 10px;border-radius:8px;cursor:pointer;font-size:13px;font-weight:400;color:var(--ink2);transition:all var(--tr);user-select:none}
+.ni:hover{background:var(--bg);color:var(--ink)}
+.ni.active{background:var(--em-d);color:var(--em);font-weight:500}
+.ni-ico{font-size:13px;width:16px;text-align:center}
+.sb-foot{padding:12px 8px;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:6px}
+.sbtn{display:flex;align-items:center;gap:7px;padding:7px 10px;border-radius:7px;font-size:12px;font-family:var(--sans);cursor:pointer;border:none;font-weight:500;width:100%;transition:all var(--tr)}
+.sbtn-em{background:var(--em);color:#fff}.sbtn-em:hover{opacity:.88}
+.sbtn-ghost{background:var(--bg);color:var(--ink2);border:1px solid var(--border)}.sbtn-ghost:hover{color:var(--ink);border-color:var(--border2)}
+
+/* MAIN */
+.main{margin-left:var(--sb);flex:1;padding:36px 44px 80px;min-height:100vh}
+.page{display:none}.page.active{display:block}
+.ph{margin-bottom:28px}
+.pt{font-size:20px;font-weight:600;letter-spacing:-.02em}
+.ps{font-size:13px;color:var(--ink2);margin-top:3px}
+
+/* GRID */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+
+/* CARD */
+.card{background:var(--surf);border:1px solid var(--border);border-radius:var(--r);transition:background var(--tr),border-color var(--tr)}
+.cp{padding:22px 24px}
+.clabel{font-size:11px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--ink3);margin-bottom:14px}
+
+/* KPI */
+.kpi{padding:18px 20px}
+.kpi-l{font-size:11px;color:var(--ink3);font-weight:500;letter-spacing:.05em;text-transform:uppercase}
+.kpi-v{font-family:var(--mono);font-size:22px;font-weight:500;margin-top:5px;letter-spacing:-.02em}
+.kpi-s{font-size:12px;color:var(--ink2);margin-top:4px}
+.tag{display:inline-flex;align-items:center;font-size:11px;font-weight:500;font-family:var(--mono);padding:2px 8px;border-radius:20px;margin-top:6px}
+.tg{background:var(--em-d);color:var(--em)}
+.tr{background:var(--red-d);color:var(--red)}
+.ta{background:var(--amber-d);color:var(--amber)}
+
+/* TABLE */
+.tbl{width:100%;border-collapse:collapse}
+.tbl th{font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3);padding:0 10px 10px;text-align:left;border-bottom:1px solid var(--border)}
+.tbl td{padding:10px;font-size:13px;border-bottom:1px solid var(--border);vertical-align:middle}
+.tbl tr:last-child td{border-bottom:none}
+.tbl tr:hover td{background:var(--bg)}
+.tbl .mono{font-family:var(--mono);font-size:13px}
+.r{text-align:right}
+
+/* INLINE INPUT */
+.fi{background:transparent;border:none;border-bottom:1px solid transparent;color:var(--ink);font-family:var(--mono);font-size:13px;width:90px;text-align:right;outline:none;padding:1px 2px;transition:border-color var(--tr);-moz-appearance:textfield}
+.fi::-webkit-outer-spin-button,.fi::-webkit-inner-spin-button{-webkit-appearance:none}
+.fi:focus{border-bottom-color:var(--em)}
+.fi-text{background:transparent;border:none;border-bottom:1px solid transparent;color:var(--ink);font-family:var(--sans);font-size:13px;outline:none;padding:1px 2px;transition:border-color var(--tr);width:100%}
+.fi-text:focus{border-bottom-color:var(--em)}
+
+/* ADD ROW */
+.add-row{display:flex;align-items:center;gap:6px;padding:8px 12px;border-radius:8px;border:1px dashed var(--border2);color:var(--ink3);cursor:pointer;font-size:12px;font-weight:500;background:none;transition:all var(--tr);width:100%;font-family:var(--sans);margin-top:10px}
+.add-row:hover{border-color:var(--em);color:var(--em);background:var(--em-d)}
+
+/* DIVIDER */
+.div{height:1px;background:var(--border);margin:16px 0}
+
+/* YEAR PILL TABS */
+.yptabs{display:flex;gap:3px;margin-bottom:22px;background:var(--border);border-radius:9px;padding:3px;width:fit-content}
+.ypt{padding:5px 14px;border-radius:7px;font-size:12px;font-weight:500;cursor:pointer;color:var(--ink2);transition:all var(--tr)}
+.ypt.active{background:var(--surf);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.08)}
+
+/* SNAPSHOT ASSET ROWS */
+.asset-rows{display:flex;flex-direction:column;gap:0}
+.arow{padding:10px 0;border-bottom:1px solid var(--border)}
+.arow:last-child{border-bottom:none}
+.arow-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;gap:12px}
+.arow-name{font-size:13px;display:flex;align-items:center;gap:8px;white-space:nowrap}
+.arow-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.arow-right{display:flex;align-items:center;gap:12px;flex-shrink:0}
+.arow-pct{font-family:var(--mono);font-size:11px;color:var(--ink2)}
+.arow-val{text-align:right}
+.arow-bar{height:5px;background:var(--border);border-radius:3px;overflow:hidden;width:100%}
+.arow-barfill{height:100%;border-radius:3px;transition:width .3s ease}
+
+/* LINE CHART */
+.chart-wrap{position:relative;width:100%;height:220px}
+svg.linechart{width:100%;height:100%}
+.axis-label{font-family:var(--mono);font-size:10px;fill:var(--ink3)}
+.chart-line{fill:none;stroke:var(--em);stroke-width:2.5;stroke-linejoin:round;stroke-linecap:round}
+.chart-area{fill:url(#areagrad);opacity:.5}
+.dot-point{fill:var(--em);stroke:var(--surf);stroke-width:2}
+.dot-label{font-family:var(--mono);font-size:10px;fill:var(--ink2)}
+.grid-line{stroke:var(--border);stroke-width:1}
+
+/* FLOW CHART */
+.flow-total-bar{display:flex;height:28px;border-radius:6px;overflow:hidden;margin-bottom:20px}
+.flow-seg{height:100%;transition:width .4s ease;position:relative;min-width:0}
+.flow-seg-tip{position:absolute;bottom:calc(100% + 5px);left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);font-size:10px;font-family:var(--mono);padding:3px 7px;border-radius:5px;white-space:nowrap;pointer-events:none;opacity:0;transition:opacity .15s}
+.flow-seg:hover .flow-seg-tip{opacity:1}
+.flow-cols{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.flow-cat{margin-bottom:12px}
+.flow-cat-header{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.flow-cat-dot{width:10px;height:10px;border-radius:2px;flex-shrink:0}
+.flow-cat-name{font-size:12px;font-weight:600;color:var(--ink)}
+.flow-cat-total{font-family:var(--mono);font-size:11px;color:var(--ink2);margin-left:auto}
+.flow-item{display:flex;align-items:center;gap:8px;padding:4px 0 4px 18px}
+.flow-item-bar-wrap{flex:1;height:5px;background:var(--border);border-radius:3px;overflow:hidden}
+.flow-item-bar{height:100%;border-radius:3px;transition:width .3s ease}
+.flow-item-name{font-size:12px;color:var(--ink2);min-width:130px}
+.flow-item-val{font-family:var(--mono);font-size:11px;color:var(--ink2);min-width:60px;text-align:right}
+
+/* BUDGET ROWS */
+.brow{display:grid;grid-template-columns:20px 180px 1fr 110px;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--border);cursor:default;transition:background var(--tr),opacity var(--tr)}
+.brow:last-child{border-bottom:none}
+.brow.dragging{opacity:.35;background:var(--bg)}
+.brow.drag-over{border-top:2px solid var(--em)}
+.drag-handle{color:var(--ink3);cursor:grab;font-size:13px;line-height:1;user-select:none;padding:2px 0}
+.brow-name-wrap{display:flex;align-items:center;gap:8px}
+.brow-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.brow-bar{height:4px;background:var(--border);border-radius:2px;overflow:hidden}
+.brow-barfill{height:100%;border-radius:2px;transition:width .3s}
+.del-btn{color:var(--ink3);background:none;border:none;cursor:pointer;font-size:14px;padding:0 4px;opacity:0;transition:opacity var(--tr)}
+.brow:hover .del-btn,.arow:hover .del-btn,.principle:hover .del-btn,.goal-item:hover .del-btn,.dip-row:hover .del-btn,.note-row:hover .del-btn{opacity:1}
+
+/* PRINCIPLE */
+.principle{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid var(--border)}
+.principle:last-child{border-bottom:none}
+.pdot{width:5px;height:5px;border-radius:50%;background:var(--em);margin-top:8px;flex-shrink:0}
+.ptext{flex:1;font-size:13px;line-height:1.6}
+
+/* GOAL */
+.goal-item{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--border);cursor:pointer}
+.goal-item:last-child{border-bottom:none}
+.gcheck{width:17px;height:17px;border-radius:5px;border:1.5px solid var(--border2);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:10px;transition:all var(--tr)}
+.goal-item.done .gcheck{background:var(--em);border-color:var(--em);color:#fff}
+.glabel{font-size:13px;flex:1}
+.goal-item.done .glabel{text-decoration:line-through;color:var(--ink3)}
+
+/* NOTE PAD */
+.notepad{width:100%;min-height:180px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--ink);font-family:var(--sans);font-size:13px;line-height:1.75;padding:14px;resize:vertical;outline:none;transition:border-color var(--tr)}
+.notepad:focus{border-color:var(--em)}
+
+/* DIP TABLE */
+.dip-row{display:grid;grid-template-columns:80px 80px 100px 1fr;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--border)}
+.dip-row:last-child{border-bottom:none}
+
+/* TOAST */
+.toast{position:fixed;bottom:24px;right:28px;z-index:999;background:var(--ink);color:var(--bg);padding:9px 16px;border-radius:8px;font-size:12px;font-weight:500;transform:translateY(14px);opacity:0;transition:all .22s;pointer-events:none}
+.toast.show{transform:translateY(0);opacity:1}
+
+/* BTN SM */
+.bsm{font-size:12px;font-family:var(--sans);font-weight:500;padding:6px 14px;border-radius:7px;cursor:pointer;border:none;transition:all var(--tr)}
+.bsm-em{background:var(--em);color:#fff}.bsm-em:hover{opacity:.88}
+.bsm-ghost{background:var(--bg);color:var(--ink2);border:1px solid var(--border)}.bsm-ghost:hover{color:var(--red);border-color:var(--red)}
+
+@media(max-width:860px){
+  :root{--sb:52px}
+  .sb-brand,.ni span,.sbtn span{display:none}
+  .main{padding:20px 16px 60px}
+  .g2,.g3,.g4{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav class="sb">
+  <div class="sb-brand">
+    <div class="sb-brand-name">Thomas Saner</div>
+    <div class="sb-brand-sub">Finanzdashboard</div>
+  </div>
+  <div class="sb-nav">
+    <div class="ni active" onclick="goTo('vermogen',this)"><span class="ni-ico">◈</span><span>Vermögen</span></div>
+    <div class="ni" onclick="goTo('budget',this)"><span class="ni-ico">⇌</span><span>Budget</span></div>
+    <div class="ni" onclick="goTo('leitsaetze',this)"><span class="ni-ico">◉</span><span>Leitsätze</span></div>
+    <div class="ni" onclick="goTo('ziele',this)"><span class="ni-ico">◎</span><span>Ziele</span></div>
+    <div class="ni" onclick="goTo('saeule3a',this)"><span class="ni-ico">🏦</span><span>Säule 3a</span></div>
+    <div class="ni" onclick="goTo('buythedip',this)"><span class="ni-ico">↓</span><span>Buy the Dip</span></div>
+    <div class="ni" onclick="goTo('strategie',this)"><span class="ni-ico">△</span><span>Strategie</span></div>
+    <div class="ni" onclick="goTo('notizen',this)"><span class="ni-ico">▭</span><span>Notizen</span></div>
+  </div>
+  <div class="sb-foot">
+    <button class="sbtn sbtn-em" onclick="saveAll()"><span>↓</span><span>Speichern</span></button>
+    <button class="sbtn sbtn-ghost" onclick="toggleTheme()"><span id="tico">◑</span><span id="tlbl">Dark</span></button>
+  </div>
+</nav>
+
+<div class="main">
+
+<!-- ═══ VERMÖGEN ═══ -->
+<div class="page active" id="page-vermogen">
+  <div class="ph"><div class="pt">Vermögen</div><div class="ps">Jährliche Snapshots — klicke auf ein Jahr zum Bearbeiten</div></div>
+
+  <div class="g4" id="kpi-row" style="margin-bottom:16px"></div>
+
+  <!-- Line Chart -->
+  <div class="card cp" style="margin-bottom:14px">
+    <div class="clabel">Vermögensentwicklung</div>
+    <div class="chart-wrap"><svg class="linechart" id="linechart" viewBox="0 0 700 200" preserveAspectRatio="xMidYMid meet"></svg></div>
+  </div>
+
+  <!-- Year Tabs + Asset Detail -->
+  <div class="card cp">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+      <div class="clabel" style="margin-bottom:0">Konten-Detail</div>
+      <button class="bsm bsm-em" onclick="addSnapshot()">+ Jahr</button>
+    </div>
+    <div class="yptabs" id="year-tabs"></div>
+    <div class="asset-rows" id="asset-rows"></div>
+  </div>
+</div>
+
+<!-- ═══ BUDGET ═══ -->
+<div class="page" id="page-budget">
+  <div class="ph"><div class="pt">Budget</div><div class="ps">Werte direkt bearbeiten — Diagramm aktualisiert sich live</div></div>
+
+  <div class="g4" style="margin-bottom:16px">
+    <div class="card kpi">
+      <div class="kpi-l">Monatslohn</div>
+      <div class="kpi-v"><input class="fi" style="width:100px;text-align:left;font-size:20px" type="number" id="b-salary" value="7399" oninput="recalcBudget();drawSankey()"></div>
+      <div class="kpi-s">CHF netto</div>
+    </div>
+    <div class="card kpi">
+      <div class="kpi-l">Ausgaben</div>
+      <div class="kpi-v" id="b-out">–</div>
+      <div class="kpi-s">CHF / Monat</div>
+    </div>
+    <div class="card kpi">
+      <div class="kpi-l">Überschuss</div>
+      <div class="kpi-v" id="b-buf">–</div>
+      <div class="kpi-s" id="b-buf-s">–</div>
+    </div>
+    <div class="card kpi">
+      <div class="kpi-l">Sparquote</div>
+      <div class="kpi-v" id="b-sq">–</div>
+      <div class="kpi-s">Investitionen / Lohn</div>
+    </div>
+  </div>
+
+  <!-- Sankey -->
+  <div class="card" style="margin-bottom:14px">
+    <div class="cp" style="padding-bottom:4px"><div class="clabel">Geldfluss</div></div>
+    <div id="flow-chart" style="padding:0 24px 24px"></div>
+  </div>
+
+  <!-- Budget rows by category -->
+  <div class="g2">
+    <div class="card cp">
+      <div class="clabel">Fixkosten</div>
+      <div id="rows-fix"></div>
+      <button class="add-row" onclick="addBudgetRow('fix')">+ Position</button>
+    </div>
+    <div class="card cp">
+      <div class="clabel">Investieren & Sparen</div>
+      <div id="rows-invest"></div>
+      <button class="add-row" onclick="addBudgetRow('invest')">+ Position</button>
+    </div>
+  </div>
+  <div style="height:14px"></div>
+  <div class="g2">
+    <div class="card cp">
+      <div class="clabel">Leben & Freizeit</div>
+      <div id="rows-leben"></div>
+      <button class="add-row" onclick="addBudgetRow('leben')">+ Position</button>
+    </div>
+    <div class="card cp">
+      <div class="clabel">Sonstiges</div>
+      <div id="rows-custom"></div>
+      <button class="add-row" onclick="addBudgetRow('custom')">+ Position</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ LEITSÄTZE ═══ -->
+<div class="page" id="page-leitsaetze">
+  <div class="ph"><div class="pt">Leitsätze</div><div class="ps">Klicken zum Bearbeiten, × zum Löschen</div></div>
+  <div class="g2">
+    <div>
+      <div class="card cp" style="margin-bottom:14px">
+        <div class="clabel">Investmentprinzipien</div>
+        <div id="principles-list"></div>
+        <button class="add-row" onclick="addPrinciple()">+ Leitsatz</button>
+      </div>
+      <div class="card cp">
+        <div class="clabel">Wichtige Erinnerungen</div>
+        <div id="reminders-list"></div>
+        <button class="add-row" onclick="addReminder()">+ Erinnerung</button>
+      </div>
+    </div>
+    <div>
+      <div class="card cp" style="margin-bottom:14px">
+        <div class="kpi-l" style="margin-bottom:12px">Notgroschen</div>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+          <span style="font-size:13px;color:var(--ink2)">Aktuell</span>
+          <input class="fi" type="number" id="ng-ist" value="5000" oninput="updateNG()" style="font-size:16px;width:90px">
+          <span style="color:var(--ink2)">CHF</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <span style="font-size:13px;color:var(--ink2)">Ziel</span>
+          <input class="fi" type="number" id="ng-ziel" value="7000" oninput="updateNG()" style="font-size:16px;width:90px">
+          <span style="color:var(--ink2)">CHF</span>
+        </div>
+        <div style="margin-top:12px">
+          <div style="height:6px;background:var(--border);border-radius:3px;overflow:hidden">
+            <div id="ng-bar" style="height:100%;background:var(--em);border-radius:3px;transition:width .3s"></div>
+          </div>
+          <div style="font-size:11px;color:var(--ink2);margin-top:6px" id="ng-pct">–</div>
+        </div>
+      </div>
+      <div class="card cp">
+        <div class="kpi-l" style="margin-bottom:12px">Pulverreserve</div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <input class="fi" type="number" id="pv-amt" value="5000" style="font-size:16px;width:90px">
+          <span style="color:var(--ink2)">CHF</span>
+        </div>
+        <div style="font-size:12px;color:var(--ink2);margin-top:8px">Für Markt-Dips reserviert</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ ZIELE ═══ -->
+<div class="page" id="page-ziele">
+  <div class="ph"><div class="pt">Ziele</div><div class="ps">Klicken zum Abhaken — jederzeit erweiterbar</div></div>
+  <div class="card cp">
+    <div class="clabel">Ziele <input class="fi-text" id="ziele-year-input" value="2026" style="width:44px;font-size:11px;letter-spacing:.05em"></div>
+    <div id="goals-list"></div>
+    <button class="add-row" onclick="addGoal()">+ Ziel hinzufügen</button>
+  </div>
+</div>
+
+<!-- ═══ SÄULE 3A ═══ -->
+<div class="page" id="page-saeule3a">
+  <div class="ph"><div class="pt">Säule 3a</div><div class="ps">Staffelplan und Kontostrategie</div></div>
+  <div class="card cp">
+    <div class="clabel" style="margin-bottom:16px">Kontostaffel</div>
+    <div id="saeule3a-list"></div>
+    <button class="add-row" onclick="addSaeule()">+ Konto</button>
+  </div>
+</div>
+
+<!-- ═══ BUY THE DIP ═══ -->
+<div class="page" id="page-buythedip">
+  <div class="ph"><div class="pt">Buy the Dip</div><div class="ps">Kaufstrategie bei Markteinbrüchen — alles anpassbar</div></div>
+  <div class="card cp" style="margin-bottom:14px">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+      <div class="clabel" style="margin-bottom:0">Tranchen</div>
+      <button class="bsm bsm-em" onclick="addDip()">+ Tranche</button>
+    </div>
+    <div style="display:grid;grid-template-columns:80px 90px 110px 120px 1fr;gap:10px;padding-bottom:8px;border-bottom:1px solid var(--border);margin-bottom:2px">
+      <span style="font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3)">Tranche</span>
+      <span style="font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3)">Trigger</span>
+      <span style="font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3)">Betrag CHF</span>
+      <span style="font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3)">Status</span>
+      <span></span>
+    </div>
+    <div id="dip-list"></div>
+  </div>
+  <div class="card cp">
+    <div class="clabel">Notizen zur Strategie</div>
+    <textarea class="notepad" id="dip-notes" placeholder="Überlegungen zur Kauf-Strategie …" style="min-height:120px"></textarea>
+  </div>
+</div>
+
+<!-- ═══ STRATEGIE ═══ -->
+<div class="page" id="page-strategie">
+  <div class="ph"><div class="pt">Strategie</div><div class="ps">Anpassbare Strategienotizen und KPIs</div></div>
+  <div class="g2" style="margin-bottom:14px">
+    <div class="card kpi">
+      <div class="kpi-l">Krypto-Anteil aktuell</div>
+      <div class="kpi-v" id="s-crypto">–</div>
+      <div id="s-crypto-tag"></div>
+      <div class="kpi-s" style="margin-top:8px">Ziel: 5–10% · Umschichten ab 15%</div>
+    </div>
+    <div class="card kpi">
+      <div class="kpi-l">Monatl. Investitionen</div>
+      <div class="kpi-v" id="s-inv">–</div>
+      <div class="kpi-s">CHF / Monat · Ziel: min. 1'500</div>
+    </div>
+  </div>
+  <div class="card cp" style="margin-bottom:14px">
+    <div class="clabel">Strategie-Notizen</div>
+    <textarea class="notepad" id="strat-notes" placeholder="Langfristige Überlegungen, Anpassungen, Gedanken …" style="min-height:180px"></textarea>
+  </div>
+  <div class="card cp">
+    <div class="clabel">Schnell-Regeln</div>
+    <div id="strat-rules-list"></div>
+    <button class="add-row" onclick="addStratRule()">+ Regel</button>
+  </div>
+</div>
+
+<!-- ═══ NOTIZEN ═══ -->
+<div class="page" id="page-notizen">
+  <div class="ph"><div class="pt">Notizen</div><div class="ps">Freie Notizen — lokal gespeichert</div></div>
+  <div class="card cp" style="margin-bottom:14px">
+    <div class="clabel">Allgemeine Notizen</div>
+    <textarea class="notepad" id="notizen-text" style="min-height:240px" placeholder="Ideen, Überlegungen, Fragen …"></textarea>
+  </div>
+  <div class="card cp">
+    <div class="clabel">CSV-Import Finpension</div>
+    <div id="note-hints-list"></div>
+    <button class="add-row" onclick="addNoteHint()">+ Hinweis</button>
+  </div>
+</div>
+
+</div><!-- /main -->
+<div class="toast" id="toast"><span id="toast-label">Gespeichert</span></div>
+
+<script>
+// ══════════════════════════════════════════
+// DATA
+// ══════════════════════════════════════════
+const ACCT_KEYS=['saeule3a','neonDepot','neonSparkonto','ibkr','saxo','raiffLohn','raiffSpar','krypto'];
+const ACCT_NAMES={saeule3a:'Säule 3a',neonDepot:'Neon Depot',neonSparkonto:'Neon Sparkonto',ibkr:'Interactive Brokers',saxo:'Saxo Bank',raiffLohn:'Raiffeisen Lohn',raiffSpar:'Raiffeisen Spar',krypto:'Krypto'};
+const ACCT_COLORS={saeule3a:'#00BF89',neonDepot:'#3B7EFF',neonSparkonto:'#7DABFF',ibkr:'#8B5CF6',saxo:'#A78BFA',raiffLohn:'#F0A020',raiffSpar:'#F5C842',krypto:'#F97316'};
+
+let SNAPSHOTS=[
+  {id:'2023',label:'2023',accounts:{saeule3a:7100,neonDepot:9900,neonSparkonto:1000,ibkr:0,saxo:0,raiffLohn:3000,raiffSpar:5000,krypto:500}},
+  {id:'2024',label:'2024',accounts:{saeule3a:15000,neonDepot:14500,neonSparkonto:3200,ibkr:25500,saxo:0,raiffLohn:1000,raiffSpar:7000,krypto:8600}},
+  {id:'2025',label:'2025',accounts:{saeule3a:22700,neonDepot:15000,neonSparkonto:3400,ibkr:62600,saxo:800,raiffLohn:1000,raiffSpar:5000,krypto:9700}},
+  {id:'2026',label:'2026',accounts:{saeule3a:32900,neonDepot:16300,neonSparkonto:3700,ibkr:83100,saxo:2500,raiffLohn:1000,raiffSpar:3000,krypto:10400}},
+];
+let activeSnapId='2026';
+
+let BUDGET=[
+  {id:1,name:'Miete + Essen',amount:1342,cat:'fix',color:'#E84646'},
+  {id:2,name:'Steuern',amount:1300,cat:'fix',color:'#F06E6E'},
+  {id:3,name:'Krankenkasse',amount:398,cat:'fix',color:'#F99090'},
+  {id:4,name:'Handy + Internet',amount:27,cat:'fix',color:'#FCBBBB'},
+  {id:5,name:'Säule 3a',amount:600,cat:'invest',color:'#00BF89'},
+  {id:6,name:'Interactive Brokers',amount:2300,cat:'invest',color:'#059669'},
+  {id:7,name:'Saxo Bank',amount:400,cat:'invest',color:'#34D399'},
+  {id:8,name:'Relai (Krypto)',amount:200,cat:'invest',color:'#6EE7B7'},
+  {id:9,name:'Ferien',amount:400,cat:'leben',color:'#F0A020'},
+  {id:10,name:'Freizeit / Konsum',amount:200,cat:'leben',color:'#F5C842'},
+];
+let _bid=11;
+
+let PRINCIPLES=[
+  "YOU DON'T BEAT THE MARKET!!!",
+  "Hauptsächlich in Vanguard Total World Stock Index (VT) investieren",
+  "Krypto-Anteil 5–10%; ab 15% umschichten",
+  "Einzelaktien nur mit Spielgeld — max. 10%",
+  "Säule 3a jährlich voll ausschöpfen (möglichst Anfang Jahr)",
+  "Bei Zusatzeinnahmen freie Hand / Pulverreserve aufbauen",
+  "Keine Meme-Coins oder hochspekulative Aktien",
+  "Monatliche Mindest-Investitionsquote: 1'500 CHF",
+  "10% Schweiz-Anteil via 3a + Saxo SPI (400 CHF fix)",
+];
+let REMINDERS=[
+  "31. Dezember: Screenshot aller Krypto-Positionen!",
+  "Man geht nicht in die Ferien um zu sparen. Das Leben geniessen.",
+];
+
+let GOALS=[
+  {id:1,text:"160'000 CHF investiert",done:false},
+  {id:2,text:"Neue Sportart angehen",done:true},
+  {id:3,text:"6 Blogartikel schreiben",done:false},
+  {id:4,text:"5 Bücher lesen",done:false},
+  {id:5,text:"Notgroschen auf 7'000 CHF aufstocken",done:false},
+];
+let _gid=6;
+
+let SAEULE3A=[
+  {id:1,nr:'1.',grenze:'32\'000',alter:'–'},
+  {id:2,nr:'2.',grenze:'30\'000',alter:'31–34'},
+  {id:3,nr:'3.',grenze:'42\'000',alter:'35–40'},
+  {id:4,nr:'4.',grenze:'60\'000',alter:'41–48'},
+  {id:5,nr:'5.',grenze:'–',alter:'–65'},
+];
+let _said=6;
+
+let DIPS=[
+  {id:1,nr:'1.',trigger:'−10%',amount:2000,status:'Bereit'},
+  {id:2,nr:'2.',trigger:'−15%',amount:1750,status:'Bereit'},
+  {id:3,nr:'3.',trigger:'−30%',amount:1250,status:'Bereit'},
+];
+let _did=4;
+
+let STRAT_RULES=[
+  "Markt steigt → normale Sparquote beibehalten",
+  "Markt fällt → Sparquote erhöhen oder nachkaufen",
+  "3a-Strategie ist langfristig — nicht kurzfristig ändern",
+  "400 CHF SPI fix; bei höherer Miete → IBKR reduzieren",
+];
+
+let NOTE_HINTS=[
+  "Transfer = Deposit",
+  "Interests = Zinsen",
+  "Fehlende Kategorien: Wechselkurs, Bruttobetrag, Gegenkonto",
+  "Datum anpassen vor Import",
+];
+
+// ══════════════════════════════════════════
+// HELPERS
+// ══════════════════════════════════════════
+const fmt=n=>Math.round(n).toLocaleString('de-CH');
+const pct=n=>(n*100).toFixed(1)+'%';
+const stot=s=>Object.values(s.accounts).reduce((a,b)=>a+b,0);
+const salary=()=>parseFloat(document.getElementById('b-salary').value)||7399;
+
+// ══════════════════════════════════════════
+// NAV
+// ══════════════════════════════════════════
+function goTo(id,el){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.ni').forEach(n=>n.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  el.classList.add('active');
+  if(id==='budget'){renderBudgetRows();drawSankey()}
+  if(id==='strategie')updateStratKPIs();
+}
+
+// ══════════════════════════════════════════
+// THEME
+// ══════════════════════════════════════════
+let dark=false;
+function toggleTheme(){
+  dark=!dark;
+  dark?document.body.setAttribute('data-dark',''):document.body.removeAttribute('data-dark');
+  document.getElementById('tlbl').textContent=dark?'Light':'Dark';
+  if(document.getElementById('page-budget').classList.contains('active'))setTimeout(drawSankey,30);
+  drawLineChart();
+}
+
+// ══════════════════════════════════════════
+// SAVE / LOAD  (Supabase + localStorage fallback)
+// ══════════════════════════════════════════
+
+// ── Paste your Supabase credentials here after setup ──
+const SUPA_URL = 'https://hhpqyxdynvztrwipcass.supabase.co';
+const SUPA_KEY = 'sb_publishable_F_pi7620MTFDmsDALICpVQ_93uH3Zlg';
+const SUPA_ROW = 1;    // fixed row id for single-user app
+
+function buildState(){
+  return {
+    snapshots:SNAPSHOTS,budget:BUDGET,principles:PRINCIPLES,reminders:REMINDERS,
+    goals:GOALS,saeule3a:SAEULE3A,dips:DIPS,stratRules:STRAT_RULES,noteHints:NOTE_HINTS,
+    notizen:document.getElementById('notizen-text').value,
+    dipNotes:document.getElementById('dip-notes').value,
+    stratNotes:document.getElementById('strat-notes').value,
+    salary:document.getElementById('b-salary').value,
+    ngIst:document.getElementById('ng-ist').value,
+    ngZiel:document.getElementById('ng-ziel').value,
+    pvAmt:document.getElementById('pv-amt').value,
+    dark,activeSnapId,
+    ids:{bid:_bid,gid:_gid,said:_said,did:_did}
+  };
+}
+
+async function saveAll(){
+  const d=buildState();
+  localStorage.setItem('fin_saner_v3',JSON.stringify(d));
+
+  const t=document.getElementById('toast');
+  const tl=document.getElementById('toast-label');
+
+  try{
+    const res=await fetch(`${SUPA_URL}/rest/v1/Finanzen?id=eq.${SUPA_ROW}`,{
+      method:'PATCH',
+      headers:{
+        'Content-Type':'application/json',
+        'apikey':SUPA_KEY,
+        'Authorization':'Bearer '+SUPA_KEY,
+        'Prefer':'return=minimal'
+      },
+      body:JSON.stringify({data:d})
+    });
+    if(!res.ok){
+      const txt=await res.text();
+      console.error('Supabase PATCH failed:',res.status,txt);
+      throw new Error(res.status);
+    }
+    if(tl) tl.textContent='☁ Gespeichert';
+  }catch(e){
+    console.error('saveAll error:',e);
+    if(tl) tl.textContent='💾 Lokal gespeichert';
+  }
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2200);
+}
+
+async function loadState(){
+  let d=null;
+
+  try{
+    const res=await fetch(`${SUPA_URL}/rest/v1/Finanzen?id=eq.${SUPA_ROW}&select=data`,{
+      headers:{
+        'apikey':SUPA_KEY,
+        'Authorization':'Bearer '+SUPA_KEY
+      }
+    });
+    if(res.ok){
+      const rows=await res.json();
+      if(rows.length && rows[0].data) d=rows[0].data;
+    } else {
+      console.error('Supabase load failed:',res.status, await res.text());
+    }
+  }catch(e){ console.error('loadState error:',e); }
+
+  if(!d){
+    try{ d=JSON.parse(localStorage.getItem('fin_saner_v3')||'null'); }catch(e){}
+  }
+
+  if(!d) return;
+  if(d.snapshots)SNAPSHOTS=d.snapshots;
+  if(d.budget)BUDGET=d.budget;
+  if(d.principles)PRINCIPLES=d.principles;
+  if(d.reminders)REMINDERS=d.reminders;
+  if(d.goals)GOALS=d.goals;
+  if(d.saeule3a)SAEULE3A=d.saeule3a;
+  if(d.dips)DIPS=d.dips;
+  if(d.stratRules)STRAT_RULES=d.stratRules;
+  if(d.noteHints)NOTE_HINTS=d.noteHints;
+  if(d.notizen)document.getElementById('notizen-text').value=d.notizen;
+  if(d.dipNotes)document.getElementById('dip-notes').value=d.dipNotes;
+  if(d.stratNotes)document.getElementById('strat-notes').value=d.stratNotes;
+  if(d.salary)document.getElementById('b-salary').value=d.salary;
+  if(d.ngIst)document.getElementById('ng-ist').value=d.ngIst;
+  if(d.ngZiel)document.getElementById('ng-ziel').value=d.ngZiel;
+  if(d.pvAmt)document.getElementById('pv-amt').value=d.pvAmt;
+  if(d.dark){dark=true;document.body.setAttribute('data-dark','');document.getElementById('tlbl').textContent='Light';}
+  if(d.activeSnapId)activeSnapId=d.activeSnapId;
+  if(d.ids){_bid=d.ids.bid;_gid=d.ids.gid;_said=d.ids.said;_did=d.ids.did;}
+}
+
+// ══════════════════════════════════════════
+// VERMÖGEN
+// ══════════════════════════════════════════
+function renderVermogen(){
+  const latest=SNAPSHOTS[SNAPSHOTS.length-1];
+  const prev=SNAPSHOTS.length>1?SNAPSHOTS[SNAPSHOTS.length-2]:null;
+  const tot=stot(latest);const prevT=prev?stot(prev):0;
+  const delta=tot-prevT;
+  const NON_INVEST=['neonSparkonto','raiffLohn','raiffSpar'];
+  const inv=Object.entries(latest.accounts).filter(([k])=>!NON_INVEST.includes(k)).reduce((a,[,v])=>a+v,0);
+  const krypto=latest.accounts.krypto||0;
+
+  document.getElementById('kpi-row').innerHTML=[
+    {l:'Gesamtvermögen',v:'CHF '+fmt(tot),s:prev?(delta>=0?'↑ +CHF ':'↓ −CHF ')+fmt(Math.abs(delta)):latest.label,c:''},
+    {l:'Investiert',v:'CHF '+fmt(inv),s:pct(inv/tot)+' des Gesamtvermögens',c:''},
+    {l:'Krypto-Anteil',v:pct(krypto/tot),s:'CHF '+fmt(krypto),c:krypto/tot>=.15?'tr':krypto/tot>=.10?'ta':'tg'},
+    {l:'Konto',v:latest.label,s:'Letzter Snapshot',c:''},
+  ].map(k=>`<div class="card kpi"><div class="kpi-l">${k.l}</div><div class="kpi-v">${k.v}</div>${k.c?`<span class="tag ${k.c}">${k.v}</span>`:''}<div class="kpi-s">${k.s}</div></div>`).join('');
+
+  drawLineChart();
+  renderYearTabs();
+  renderAssetRows();
+}
+
+function drawLineChart(){
+  const svg=document.getElementById('linechart');
+  svg.innerHTML='';
+  const W=700,H=200,PL=80,PR=40,PT=24,PB=30;
+  const cW=W-PL-PR,cH=H-PT-PB;
+  const totals=SNAPSHOTS.map(stot);
+  const maxV=Math.max(...totals)*1.12;
+  const minV=0;
+  const n=SNAPSHOTS.length;
+  const xs=SNAPSHOTS.map((_,i)=>PL+i*(cW/(n-1||1)));
+  const ys=totals.map(v=>PT+cH-(((v-minV)/(maxV-minV))*cH));
+
+  // defs gradient
+  const defs=document.createElementNS('http://www.w3.org/2000/svg','defs');
+  defs.innerHTML=`<linearGradient id="areagrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#00BF89" stop-opacity=".35"/><stop offset="100%" stop-color="#00BF89" stop-opacity="0"/></linearGradient>`;
+  svg.appendChild(defs);
+
+  // Y grid + labels
+  const yTicks=4;
+  for(let i=0;i<=yTicks;i++){
+    const v=maxV*i/yTicks;
+    const y=PT+cH-(i/yTicks*cH);
+    const g=document.createElementNS('http://www.w3.org/2000/svg','line');
+    g.setAttribute('x1',PL);g.setAttribute('x2',W-PR);g.setAttribute('y1',y);g.setAttribute('y2',y);
+    g.setAttribute('class','grid-line');svg.appendChild(g);
+    const t=document.createElementNS('http://www.w3.org/2000/svg','text');
+    t.setAttribute('x',PL-8);t.setAttribute('y',y+4);t.setAttribute('text-anchor','end');
+    t.setAttribute('class','axis-label');
+    t.textContent=v>=1000?Math.round(v/1000)+'k':Math.round(v);
+    svg.appendChild(t);
+  }
+
+  // Area
+  const areaPath=`M ${xs[0]},${PT+cH} `+xs.map((x,i)=>`L ${x},${ys[i]}`).join(' ')+` L ${xs[xs.length-1]},${PT+cH} Z`;
+  const area=document.createElementNS('http://www.w3.org/2000/svg','path');
+  area.setAttribute('d',areaPath);area.setAttribute('class','chart-area');svg.appendChild(area);
+
+  // Line
+  const linePath='M '+xs.map((x,i)=>`${x},${ys[i]}`).join(' L ');
+  const line=document.createElementNS('http://www.w3.org/2000/svg','path');
+  line.setAttribute('d',linePath);line.setAttribute('class','chart-line');svg.appendChild(line);
+
+  // Dots + labels — anchor first label 'start', last 'end', rest 'middle'
+  xs.forEach((x,i)=>{
+    const dot=document.createElementNS('http://www.w3.org/2000/svg','circle');
+    dot.setAttribute('cx',x);dot.setAttribute('cy',ys[i]);dot.setAttribute('r',4);
+    dot.setAttribute('class','dot-point');svg.appendChild(dot);
+
+    const anchor = i===0?'start':i===n-1?'end':'middle';
+    const lx = i===0?x+2:i===n-1?x-2:x;
+
+    const tv=document.createElementNS('http://www.w3.org/2000/svg','text');
+    tv.setAttribute('x',lx);tv.setAttribute('y',ys[i]-10);tv.setAttribute('text-anchor',anchor);
+    tv.setAttribute('class','dot-label');tv.textContent='CHF '+fmt(totals[i]);
+    svg.appendChild(tv);
+
+    const tx=document.createElementNS('http://www.w3.org/2000/svg','text');
+    tx.setAttribute('x',x);tx.setAttribute('y',H-PB+16);tx.setAttribute('text-anchor',anchor);
+    tx.setAttribute('class','axis-label');tx.textContent=SNAPSHOTS[i].label;
+    svg.appendChild(tx);
+  });
+}
+
+function renderYearTabs(){
+  document.getElementById('year-tabs').innerHTML=SNAPSHOTS.map((s,i)=>`
+    <div class="ypt${s.id===activeSnapId?' active':''}" onclick="selectSnap(${i})">${s.label}</div>
+  `).join('')+`<div class="ypt" style="color:var(--red);border:1px dashed var(--border2);margin-left:4px" onclick="deleteActiveSnap()">−</div>`;
+}
+
+function selectSnap(idx){
+  activeSnapId=SNAPSHOTS[idx].id;
+  renderYearTabs();
+  renderAssetRows();
+}
+
+function deleteActiveSnap(){
+  if(SNAPSHOTS.length<=1){alert('Mindestens ein Snapshot muss vorhanden sein.');return;}
+  if(!confirm('Snapshot löschen?'))return;
+  SNAPSHOTS=SNAPSHOTS.filter(s=>s.id!==activeSnapId);
+  activeSnapId=SNAPSHOTS[SNAPSHOTS.length-1].id;
+  renderVermogen();
+}
+
+function renderAssetRows(){
+  const snap=SNAPSHOTS.find(s=>s.id===activeSnapId)||SNAPSHOTS[SNAPSHOTS.length-1];
+  const snapIdx=SNAPSHOTS.findIndex(s=>s.id===snap.id);
+  const tot=stot(snap);
+  const max=Math.max(...ACCT_KEYS.map(k=>snap.accounts[k]||0),1);
+  document.getElementById('asset-rows').innerHTML=ACCT_KEYS.map(k=>`
+    <div class="arow">
+      <div class="arow-top">
+        <div class="arow-name"><div class="arow-dot" style="background:${ACCT_COLORS[k]}"></div>${ACCT_NAMES[k]}</div>
+        <div class="arow-right">
+          <span class="arow-pct">${pct((snap.accounts[k]||0)/tot)}</span>
+          <input class="fi" type="number" value="${snap.accounts[k]||0}" onchange="updateSnap(${snapIdx},'${k}',this.value)" style="width:80px"> CHF
+        </div>
+      </div>
+      <div class="arow-bar"><div class="arow-barfill" style="width:${((snap.accounts[k]||0)/max*100).toFixed(1)}%;background:${ACCT_COLORS[k]}"></div></div>
+    </div>
+  `).join('');
+}
+
+function updateSnap(idx,key,val){
+  SNAPSHOTS[idx].accounts[key]=parseFloat(val)||0;
+  drawLineChart();
+  renderYearTabs();
+  // re-render KPIs without full re-render (avoids losing focus)
+  const latest=SNAPSHOTS[SNAPSHOTS.length-1];
+  const prev=SNAPSHOTS.length>1?SNAPSHOTS[SNAPSHOTS.length-2]:null;
+  const tot=stot(latest);const prevT=prev?stot(prev):0;
+  const delta=tot-prevT;
+  const NON_INVEST2=['neonSparkonto','raiffLohn','raiffSpar'];
+  const inv=Object.entries(latest.accounts).filter(([k])=>!NON_INVEST2.includes(k)).reduce((a,[,v])=>a+v,0);
+  const krypto=latest.accounts.krypto||0;
+  document.getElementById('kpi-row').innerHTML=[
+    {l:'Gesamtvermögen',v:'CHF '+fmt(tot),s:prev?(delta>=0?'↑ +CHF ':'↓ −CHF ')+fmt(Math.abs(delta)):latest.label,c:''},
+    {l:'Investiert',v:'CHF '+fmt(inv),s:pct(inv/tot)+' des Gesamtvermögens',c:''},
+    {l:'Krypto-Anteil',v:pct(krypto/tot),s:'CHF '+fmt(krypto),c:krypto/tot>=.15?'tr':krypto/tot>=.10?'ta':'tg'},
+    {l:'Konto',v:latest.label,s:'Letzter Snapshot',c:''},
+  ].map(k=>`<div class="card kpi"><div class="kpi-l">${k.l}</div><div class="kpi-v">${k.v}</div>${k.c?`<span class="tag ${k.c}">${k.v}</span>`:''}<div class="kpi-s">${k.s}</div></div>`).join('');
+  updateStratKPIs();
+}
+
+function addSnapshot(){
+  const label=prompt('Jahr (z.B. 2027):');if(!label)return;
+  const latest=SNAPSHOTS[SNAPSHOTS.length-1];
+  SNAPSHOTS.push({id:label,label,accounts:{...latest.accounts}});
+  activeSnapId=label;renderVermogen();
+}
+
+// ══════════════════════════════════════════
+// BUDGET
+// ══════════════════════════════════════════
+const CAT_COLS={fix:'#E84646',invest:'#00BF89',leben:'#F0A020',custom:'#9CA3AF'};
+
+function renderBudgetRows(){
+  ['fix','invest','leben','custom'].forEach(cat=>{
+    const items=BUDGET.filter(b=>b.cat===cat);
+    const maxA=Math.max(...items.map(b=>b.amount),1);
+    const container=document.getElementById('rows-'+cat);
+    container.innerHTML=items.map((b)=>`
+      <div class="brow" draggable="true" data-id="${b.id}" data-cat="${cat}"
+        ondragstart="budgetDragStart(event)"
+        ondragover="budgetDragOver(event)"
+        ondragleave="budgetDragLeave(event)"
+        ondrop="budgetDrop(event)"
+        ondragend="budgetDragEnd(event)">
+        <div class="drag-handle" title="Verschieben">⠿</div>
+        <div class="brow-name-wrap">
+          <div class="brow-dot" style="background:${b.color}"></div>
+          <input class="fi-text" value="${b.name}" onchange="updateBudgetName(${b.id},this.value)">
+        </div>
+        <div class="brow-bar"><div class="brow-barfill" style="width:${(b.amount/maxA*100).toFixed(1)}%;background:${b.color}"></div></div>
+        <div style="display:flex;align-items:center;gap:4px;justify-content:flex-end">
+          <input class="fi" type="number" value="${b.amount}" onchange="updateBudgetAmt(${b.id},this.value)">
+          <button class="del-btn" onclick="deleteBudget(${b.id})">×</button>
+        </div>
+      </div>
+    `).join('');
+  });
+  recalcBudget();
+}
+
+// ── Drag & Drop for budget rows (within same category)
+let _dragId=null;
+function budgetDragStart(e){
+  _dragId=parseInt(e.currentTarget.dataset.id);
+  e.currentTarget.classList.add('dragging');
+  e.dataTransfer.effectAllowed='move';
+}
+function budgetDragOver(e){
+  e.preventDefault();
+  e.dataTransfer.dropEffect='move';
+  e.currentTarget.classList.add('drag-over');
+}
+function budgetDragLeave(e){
+  e.currentTarget.classList.remove('drag-over');
+}
+function budgetDrop(e){
+  e.preventDefault();
+  e.currentTarget.classList.remove('drag-over');
+  const targetId=parseInt(e.currentTarget.dataset.id);
+  if(_dragId===null||_dragId===targetId)return;
+  const fromIdx=BUDGET.findIndex(b=>b.id===_dragId);
+  const toIdx=BUDGET.findIndex(b=>b.id===targetId);
+  if(fromIdx<0||toIdx<0)return;
+  // Only allow within same cat
+  if(BUDGET[fromIdx].cat!==BUDGET[toIdx].cat)return;
+  const [moved]=BUDGET.splice(fromIdx,1);
+  BUDGET.splice(toIdx,0,moved);
+  renderBudgetRows();
+  drawSankey();
+}
+function budgetDragEnd(e){
+  e.currentTarget.classList.remove('dragging');
+  document.querySelectorAll('.brow').forEach(r=>r.classList.remove('drag-over'));
+  _dragId=null;
+}
+
+function updateBudgetName(id,v){const b=BUDGET.find(x=>x.id===id);if(b){b.name=v;drawSankey();}}
+function updateBudgetAmt(id,v){const b=BUDGET.find(x=>x.id===id);if(b){b.amount=parseFloat(v)||0;renderBudgetRows();drawSankey();}}
+function deleteBudget(id){BUDGET=BUDGET.filter(b=>b.id!==id);renderBudgetRows();drawSankey();}
+function addBudgetRow(cat){
+  const name=prompt('Bezeichnung:');if(!name)return;
+  const amount=parseFloat(prompt('Betrag CHF:')||0);
+  BUDGET.push({id:++_bid,name,amount,cat,color:CAT_COLS[cat]});
+  renderBudgetRows();drawSankey();
+}
+
+function recalcBudget(){
+  const sal=salary();
+  const tot=BUDGET.reduce((s,b)=>s+b.amount,0);
+  const buf=sal-tot;
+  const investAmt=BUDGET.filter(b=>b.cat==='invest').reduce((s,b)=>s+b.amount,0);
+  const sqActual=(investAmt/sal*100).toFixed(1);
+  document.getElementById('b-out').textContent=fmt(tot);
+  document.getElementById('b-buf').textContent=(buf>=0?'+':'')+fmt(buf);
+  document.getElementById('b-buf').style.color=buf>=0?'var(--em)':'var(--red)';
+  document.getElementById('b-buf-s').textContent=buf>=0?'Puffer':'Defizit';
+  document.getElementById('b-sq').textContent=sqActual+'%';
+  document.getElementById('b-sq').style.color=parseFloat(sqActual)>=40?'var(--em)':'var(--amber)';
+}
+
+// ══════════════════════════════════════════
+// FLOW CHART (replaces Sankey)
+// ══════════════════════════════════════════
+function drawSankey(){ drawFlowChart(); }
+function drawFlowChart(){
+  const el=document.getElementById('flow-chart');
+  const sal=salary();
+  const tot=BUDGET.reduce((s,b)=>s+b.amount,0);
+  const surplus=Math.max(0,sal-tot);
+
+  const cats=[
+    {k:'fix',   name:'Fixkosten',  color:'#E84646'},
+    {k:'invest',name:'Investieren',color:'#00BF89'},
+    {k:'leben', name:'Leben',      color:'#F0A020'},
+    {k:'custom',name:'Sonstiges',  color:'#9CA3AF'},
+  ];
+
+  const groups=[];
+  cats.forEach(c=>{
+    const items=BUDGET.filter(b=>b.cat===c.k);
+    if(items.length) groups.push({...c,items,total:items.reduce((s,b)=>s+b.amount,0)});
+  });
+  if(surplus>0) groups.push({k:'puffer',name:'Puffer',color:'#6EE7B7',items:[],total:surplus});
+
+  // Each bar is drawn relative to salary = 100%
+  // Salary bar = full width (blue)
+  // Category bars = proportional width relative to salary
+
+  const BAR_H=10; // px height per bar row
+
+  const salaryRow=`
+    <div style="margin-bottom:6px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+        <div style="display:flex;align-items:center;gap:7px">
+          <div style="width:8px;height:8px;border-radius:2px;background:#3B7EFF;flex-shrink:0"></div>
+          <span style="font-size:12px;font-weight:600;color:var(--ink)">Lohn (Referenz)</span>
+        </div>
+        <span style="font-family:var(--mono);font-size:12px;color:var(--ink2)">CHF ${fmt(sal)} · 100%</span>
+      </div>
+      <div style="height:${BAR_H}px;background:#3B7EFF;border-radius:4px;width:100%"></div>
+    </div>`;
+
+  const spacer=`<div style="height:1px;background:var(--border);margin:14px 0"></div>`;
+
+  const catBars=groups.map(g=>{
+    const w=(g.total/sal*100).toFixed(2);
+    const pct=(g.total/sal*100).toFixed(1);
+    // Item sub-bars relative to category total
+    const itemRows=g.items.map(it=>{
+      const iw=g.total>0?(it.amount/sal*100).toFixed(2):0;
+      const ipct=g.total>0?(it.amount/g.total*100).toFixed(0):0;
+      return `<div style="margin-top:4px;padding-left:15px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:3px">
+          <span style="font-size:11px;color:var(--ink2)">${it.name}</span>
+          <span style="font-family:var(--mono);font-size:11px;color:var(--ink3)">CHF ${fmt(it.amount)}</span>
+        </div>
+        <div style="height:5px;background:var(--border);border-radius:3px;overflow:hidden">
+          <div style="height:100%;width:${iw}%;background:${g.color};opacity:0.6;border-radius:3px;transition:width .3s"></div>
+        </div>
+      </div>`;
+    }).join('');
+
+    return `<div style="margin-bottom:14px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+        <div style="display:flex;align-items:center;gap:7px">
+          <div style="width:8px;height:8px;border-radius:2px;background:${g.color};flex-shrink:0"></div>
+          <span style="font-size:12px;font-weight:600;color:var(--ink)">${g.name}</span>
+        </div>
+        <span style="font-family:var(--mono);font-size:12px;color:var(--ink2)">CHF ${fmt(g.total)} · ${pct}%</span>
+      </div>
+      <div style="height:${BAR_H}px;background:var(--border);border-radius:4px;overflow:hidden">
+        <div style="height:100%;width:${w}%;background:${g.color};border-radius:4px;transition:width .4s ease"></div>
+      </div>
+      ${itemRows}
+    </div>`;
+  }).join('');
+
+  el.innerHTML=salaryRow+spacer+catBars;
+}
+
+// ══════════════════════════════════════════
+// LEITSÄTZE
+// ══════════════════════════════════════════
+function renderPrinciples(){
+  document.getElementById('principles-list').innerHTML=PRINCIPLES.map((p,i)=>`
+    <div class="principle">
+      <div class="pdot"></div>
+      <div class="ptext"><input class="fi-text" value="${p.replace(/"/g,'&quot;')}" onchange="PRINCIPLES[${i}]=this.value"></div>
+      <button class="del-btn" onclick="PRINCIPLES.splice(${i},1);renderPrinciples()">×</button>
+    </div>`).join('');
+}
+function addPrinciple(){PRINCIPLES.push('Neuer Leitsatz');renderPrinciples();}
+
+function renderReminders(){
+  document.getElementById('reminders-list').innerHTML=REMINDERS.map((r,i)=>`
+    <div class="principle">
+      <div class="pdot" style="background:var(--amber)"></div>
+      <div class="ptext"><input class="fi-text" value="${r.replace(/"/g,'&quot;')}" onchange="REMINDERS[${i}]=this.value"></div>
+      <button class="del-btn" onclick="REMINDERS.splice(${i},1);renderReminders()">×</button>
+    </div>`).join('');
+}
+function addReminder(){REMINDERS.push('Neue Erinnerung');renderReminders();}
+
+function updateNG(){
+  const ist=parseFloat(document.getElementById('ng-ist').value)||0;
+  const ziel=parseFloat(document.getElementById('ng-ziel').value)||1;
+  const p=Math.min(100,(ist/ziel*100)).toFixed(0);
+  document.getElementById('ng-bar').style.width=p+'%';
+  document.getElementById('ng-pct').textContent=p+'% erreicht ('+fmt(ist)+' / '+fmt(ziel)+' CHF)';
+}
+
+// ══════════════════════════════════════════
+// ZIELE
+// ══════════════════════════════════════════
+function renderGoals(){
+  document.getElementById('goals-list').innerHTML=GOALS.map((g,i)=>`
+    <div class="goal-item${g.done?' done':''}" onclick="toggleGoal(${i})">
+      <div class="gcheck">${g.done?'✓':''}</div>
+      <div class="glabel"><input class="fi-text" value="${g.text.replace(/"/g,'&quot;')}" onclick="event.stopPropagation()" onchange="GOALS[${i}].text=this.value"></div>
+      <button class="del-btn" onclick="event.stopPropagation();GOALS.splice(${i},1);renderGoals()">×</button>
+    </div>`).join('');
+}
+function toggleGoal(i){GOALS[i].done=!GOALS[i].done;renderGoals();}
+function addGoal(){GOALS.push({id:++_gid,text:'Neues Ziel',done:false});renderGoals();}
+
+function renderSaeule(){
+  document.getElementById('saeule3a-list').innerHTML=`
+  <div style="display:grid;grid-template-columns:40px 90px 80px 1fr;gap:8px;padding-bottom:6px;border-bottom:1px solid var(--border);margin-bottom:2px">
+    <span style="font-size:11px;font-weight:500;text-transform:uppercase;color:var(--ink3);letter-spacing:.05em">Nr.</span>
+    <span style="font-size:11px;font-weight:500;text-transform:uppercase;color:var(--ink3);letter-spacing:.05em">Grenze</span>
+    <span style="font-size:11px;font-weight:500;text-transform:uppercase;color:var(--ink3);letter-spacing:.05em">Alter</span>
+    <span></span>
+  </div>`+
+  SAEULE3A.map((s,i)=>`
+    <div class="dip-row" style="grid-template-columns:40px 90px 80px 1fr">
+      <input class="fi-text" style="font-size:13px" value="${s.nr}" onchange="SAEULE3A[${i}].nr=this.value">
+      <input class="fi-text" style="font-size:13px" value="${s.grenze}" onchange="SAEULE3A[${i}].grenze=this.value">
+      <input class="fi-text" style="font-size:13px" value="${s.alter}" onchange="SAEULE3A[${i}].alter=this.value">
+      <button class="del-btn" onclick="SAEULE3A.splice(${i},1);renderSaeule()">×</button>
+    </div>`).join('')+`
+  <button class="add-row" onclick="addSaeule()" style="margin-top:8px">+ Konto</button>`;
+  // overwrite to avoid double btn
+  document.getElementById('saeule3a-list').innerHTML=`
+  <div style="display:grid;grid-template-columns:40px 90px 80px 1fr;gap:8px;padding-bottom:6px;border-bottom:1px solid var(--border);margin-bottom:2px">
+    <span style="font-size:11px;font-weight:500;text-transform:uppercase;color:var(--ink3)">Nr.</span>
+    <span style="font-size:11px;font-weight:500;text-transform:uppercase;color:var(--ink3)">Grenze</span>
+    <span style="font-size:11px;font-weight:500;text-transform:uppercase;color:var(--ink3)">Alter</span>
+    <span></span>
+  </div>`+
+  SAEULE3A.map((s,i)=>`
+    <div style="display:grid;grid-template-columns:40px 90px 80px 1fr;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--border)">
+      <input class="fi-text" value="${s.nr}" onchange="SAEULE3A[${i}].nr=this.value">
+      <input class="fi-text" value="${s.grenze}" onchange="SAEULE3A[${i}].grenze=this.value">
+      <input class="fi-text" value="${s.alter}" onchange="SAEULE3A[${i}].alter=this.value">
+      <button class="del-btn" onclick="SAEULE3A.splice(${i},1);renderSaeule()">×</button>
+    </div>`).join('');
+}
+function addSaeule(){SAEULE3A.push({id:++_said,nr:(SAEULE3A.length+1)+'.',grenze:'–',alter:'–'});renderSaeule();}
+
+// ══════════════════════════════════════════
+// BUY THE DIP
+// ══════════════════════════════════════════
+const DIP_STATUSES=['Bereit','Ausgeführt','Warten'];
+function renderDips(){
+  document.getElementById('dip-list').innerHTML=DIPS.map((d,i)=>`
+    <div class="dip-row">
+      <input class="fi-text" value="${d.nr}" onchange="DIPS[${i}].nr=this.value">
+      <input class="fi-text" value="${d.trigger}" onchange="DIPS[${i}].trigger=this.value">
+      <input class="fi" type="number" value="${d.amount}" onchange="DIPS[${i}].amount=parseFloat(this.value)||0">
+      <select onchange="DIPS[${i}].status=this.value" style="font-family:var(--sans);font-size:12px;border:1px solid var(--border);border-radius:6px;padding:4px 8px;background:var(--bg);color:var(--ink);outline:none">
+        ${DIP_STATUSES.map(s=>`<option${s===d.status?' selected':''}>${s}</option>`).join('')}
+      </select>
+      <button class="del-btn" onclick="DIPS.splice(${i},1);renderDips()">×</button>
+    </div>`).join('');
+}
+function addDip(){DIPS.push({id:++_did,nr:(DIPS.length+1)+'.',trigger:'−%',amount:0,status:'Bereit'});renderDips();}
+
+// ══════════════════════════════════════════
+// STRATEGIE
+// ══════════════════════════════════════════
+function renderStratRules(){
+  document.getElementById('strat-rules-list').innerHTML=STRAT_RULES.map((r,i)=>`
+    <div class="principle">
+      <div class="pdot"></div>
+      <div class="ptext"><input class="fi-text" value="${r.replace(/"/g,'&quot;')}" onchange="STRAT_RULES[${i}]=this.value"></div>
+      <button class="del-btn" onclick="STRAT_RULES.splice(${i},1);renderStratRules()">×</button>
+    </div>`).join('');
+}
+function addStratRule(){STRAT_RULES.push('Neue Regel');renderStratRules();}
+
+function updateStratKPIs(){
+  const latest=SNAPSHOTS[SNAPSHOTS.length-1];
+  const tot=stot(latest);const krypto=latest.accounts.krypto||0;
+  const cp=krypto/tot;
+  document.getElementById('s-crypto').textContent=pct(cp);
+  document.getElementById('s-crypto').style.color=cp>=.15?'var(--red)':cp>=.10?'var(--amber)':'var(--em)';
+  document.getElementById('s-crypto-tag').innerHTML=`<span class="tag ${cp>=.15?'tr':cp>=.10?'ta':'tg'}">${cp>=.15?'⚠ Umschichten!':cp>=.10?'Grenzbereich':'OK'}</span>`;
+  const inv=BUDGET.filter(b=>b.cat==='invest').reduce((s,b)=>s+b.amount,0);
+  document.getElementById('s-inv').textContent=fmt(inv);
+  document.getElementById('s-inv').style.color=inv>=1500?'var(--em)':'var(--amber)';
+}
+
+// ══════════════════════════════════════════
+// NOTE HINTS
+// ══════════════════════════════════════════
+function renderNoteHints(){
+  document.getElementById('note-hints-list').innerHTML=NOTE_HINTS.map((h,i)=>`
+    <div class="principle note-row">
+      <div class="pdot"></div>
+      <div class="ptext"><input class="fi-text" value="${h.replace(/"/g,'&quot;')}" onchange="NOTE_HINTS[${i}]=this.value"></div>
+      <button class="del-btn" onclick="NOTE_HINTS.splice(${i},1);renderNoteHints()">×</button>
+    </div>`).join('');
+}
+function addNoteHint(){NOTE_HINTS.push('Neuer Hinweis');renderNoteHints();}
+
+// ══════════════════════════════════════════
+// INIT
+// ══════════════════════════════════════════
+(async()=>{
+  await loadState();
+  renderVermogen();
+  renderBudgetRows();
+  renderPrinciples();
+  renderReminders();
+  renderGoals();
+  renderSaeule();
+  renderDips();
+  renderStratRules();
+  renderNoteHints();
+  updateNG();
+  updateStratKPIs();
+  drawFlowChart();
+  setInterval(saveAll,90000);
+})();
+</script>
+</body>
+</html>
