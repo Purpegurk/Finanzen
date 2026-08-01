@@ -244,7 +244,7 @@
   "ngIst": "5000",
   "ngZiel": "7000",
   "pvAmt": "5000",
-  "dark": false,
+  "dark": true,
   "activeSnapId": "2026",
   "ids": {
     "bid": 11,
