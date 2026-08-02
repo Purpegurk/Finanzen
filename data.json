@@ -87,18 +87,18 @@
       "color": "#FCBBBB"
     },
     {
-      "id": 5,
-      "name": "Säule 3a",
-      "amount": 600,
-      "cat": "invest",
-      "color": "#00BF89"
-    },
-    {
       "id": 6,
       "name": "Interactive Brokers",
       "amount": 2300,
       "cat": "invest",
       "color": "#059669"
+    },
+    {
+      "id": 5,
+      "name": "Säule 3a",
+      "amount": 600,
+      "cat": "invest",
+      "color": "#00BF89"
     },
     {
       "id": 7,
