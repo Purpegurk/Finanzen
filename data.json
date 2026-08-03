@@ -208,21 +208,21 @@
       "nr": "1.",
       "trigger": "−10%",
       "amount": 2000,
-      "status": "Bereit"
+      "status": "Warten"
     },
     {
       "id": 2,
       "nr": "2.",
       "trigger": "−15%",
       "amount": 1750,
-      "status": "Bereit"
+      "status": "Warten"
     },
     {
       "id": 3,
       "nr": "3.",
       "trigger": "−30%",
       "amount": 1250,
-      "status": "Bereit"
+      "status": "Warten"
     }
   ],
   "stratRules": [
