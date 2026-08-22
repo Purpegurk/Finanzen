@@ -239,7 +239,7 @@
   ],
   "notizen": "",
   "dipNotes": "",
-  "stratNotes": "Einzelaktien-Strategie\nMax. 5–10% des Portfolios für Einzeltitel/Spass-Trades, kein Nachkaufen bei bestehenden Positionen — Verwässerung durch VT/SPI-Sparplan. Sobald der ursprüngliche Einsatz erreicht ist, wird er entnommen und in VT reinvestiert; der verbleibende Gewinnanteil läuft als \"Hausgeld\" ohne Kapitalrisiko weiter, abgesichert mit einem Trailing Stop (20–25%, je nach Volatilität). Bei Verlustpositionen zählt die ursprüngliche These, nicht ein Kursziel: Wenn ich die Aktie heute nicht neu kaufen würde, wird verkauft und in VT umgeschichtet — unabhängig vom Kursstand. Quartalsweise Check, ob der Einzelaktien-Anteil noch innerhalb der Grenze liegt.",
+  "stratNotes": "Spass-Topf (Einzelaktien + Krypto): 10-15% des Portfolios. BTC-Sparplan läuft weiter (aktuell CHF 200/Monat, Anpassung je nach Budgetlage), kleine Altcoin-Positionen (ETH, SOL, XRP) werden passiv gehalten ohne aktives Nachjustieren — zu klein, um Aufwand zu rechtfertigen, Totalverlust als möglicher Ausgang akzeptiert. Bei Einzelaktien gilt weiterhin: Einsatz raus bei ausreichendem Gewinn, Trailing Stop (20-25%) auf den Rest, bei Verlustpositionen zählt die ursprüngliche These statt eines Kursziels. Quartalsweiser Check der 10-15%-Gesamtgrenze; bei Annäherung an die Obergrenze wird zuerst der BTC-Sparplan reduziert, bevor bestehende Positionen angetastet werden.",
   "salary": "7399",
   "ngIst": "3000",
   "ngZiel": "7000",
@@ -252,5 +252,5 @@
     "said": 6,
     "did": 4
   },
-  "updatedAt": 1787326496055
+  "updatedAt": 1787398446044
 }
