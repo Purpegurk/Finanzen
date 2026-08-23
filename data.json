@@ -46,14 +46,14 @@
       "id": "2026",
       "label": "2026",
       "accounts": {
-        "saeule3a": 32900,
-        "neonDepot": 16300,
-        "neonSparkonto": 3700,
-        "ibkr": 83100,
-        "saxo": 2500,
+        "saeule3a": 35000,
+        "neonDepot": 1100,
+        "neonSparkonto": 3200,
+        "ibkr": 107900,
+        "saxo": 3400,
         "raiffLohn": 1000,
         "raiffSpar": 3000,
-        "krypto": 10400
+        "krypto": 11400
       }
     }
   ],
@@ -87,18 +87,18 @@
       "color": "#FCBBBB"
     },
     {
-      "id": 5,
-      "name": "Säule 3a",
-      "amount": 600,
-      "cat": "invest",
-      "color": "#00BF89"
-    },
-    {
       "id": 6,
       "name": "Interactive Brokers",
       "amount": 2300,
       "cat": "invest",
       "color": "#059669"
+    },
+    {
+      "id": 5,
+      "name": "Säule 3a",
+      "amount": 600,
+      "cat": "invest",
+      "color": "#00BF89"
     },
     {
       "id": 7,
@@ -131,14 +131,13 @@
   ],
   "principles": [
     "YOU DON'T BEAT THE MARKET!!!",
-    "Hauptsächlich in Vanguard Total World Stock Index (VT) investieren",
-    "Krypto-Anteil 5–10%; ab 15% umschichten",
+    "Basisinvestment:  VT + SPI",
+    "Krypto-Anteil 5–10%: ab 15% umschichten",
     "Einzelaktien nur mit Spielgeld — max. 10%",
     "Säule 3a jährlich voll ausschöpfen (möglichst Anfang Jahr)",
-    "Bei Zusatzeinnahmen freie Hand / Pulverreserve aufbauen",
+    "Zusatzeinnahmen: 1. Pulverreserve auffüllen 2. freie Hand",
     "Keine Meme-Coins oder hochspekulative Aktien",
-    "Monatliche Mindest-Investitionsquote: 1'500 CHF",
-    "10% Schweiz-Anteil via 3a + Saxo SPI (400 CHF fix)"
+    "Monatliche Mindest-Investitionsquote: 1'500 CHF"
   ],
   "reminders": [
     "31. Dezember: Screenshot aller Krypto-Positionen!",
@@ -209,28 +208,28 @@
       "nr": "1.",
       "trigger": "−10%",
       "amount": 2000,
-      "status": "Bereit"
+      "status": "Warten"
     },
     {
       "id": 2,
       "nr": "2.",
       "trigger": "−15%",
       "amount": 1750,
-      "status": "Bereit"
+      "status": "Warten"
     },
     {
       "id": 3,
       "nr": "3.",
       "trigger": "−30%",
       "amount": 1250,
-      "status": "Bereit"
+      "status": "Warten"
     }
   ],
   "stratRules": [
     "Markt steigt → normale Sparquote beibehalten",
     "Markt fällt → Sparquote erhöhen oder nachkaufen",
     "3a-Strategie ist langfristig — nicht kurzfristig ändern",
-    "400 CHF SPI fix; bei höherer Miete → IBKR reduzieren"
+    "400 CHF SPI fix: bei höherer Miete → IBKR-Sparplan + BTC-Sparplan reduzieren"
   ],
   "noteHints": [
     "Transfer = Deposit",
@@ -242,7 +241,7 @@
   "dipNotes": "",
   "stratNotes": "Spass-Topf (Einzelaktien + Krypto): 10-15% des Portfolios. BTC-Sparplan läuft weiter (aktuell CHF 200/Monat, Anpassung je nach Budgetlage), kleine Altcoin-Positionen (ETH, SOL, XRP) werden passiv gehalten ohne aktives Nachjustieren — zu klein, um Aufwand zu rechtfertigen, Totalverlust als möglicher Ausgang akzeptiert. Bei Einzelaktien gilt weiterhin: Einsatz raus bei ausreichendem Gewinn, Trailing Stop (20-25%) auf den Rest, bei Verlustpositionen zählt die ursprüngliche These statt eines Kursziels. Quartalsweiser Check der 10-15%-Gesamtgrenze; bei Annäherung an die Obergrenze wird zuerst der BTC-Sparplan reduziert, bevor bestehende Positionen angetastet werden.",
   "salary": "7399",
-  "ngIst": "5000",
+  "ngIst": "3000",
   "ngZiel": "7000",
   "pvAmt": "5000",
   "dark": true,
@@ -253,5 +252,5 @@
     "said": 6,
     "did": 4
   },
-  "updatedAt": 1787498620941
+  "updatedAt": 1787497364168
 }
