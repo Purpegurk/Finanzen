@@ -239,7 +239,7 @@
   ],
   "notizen": "",
   "dipNotes": "",
-  "stratNotes": "Spass-Topf (Einzelaktien + Krypto): 10-15% des Portfolios. BTC-Sparplan läuft weiter (aktuell CHF 200/Monat, Anpassung je nach Budgetlage), kleine Altcoin-Positionen (ETH, SOL, XRP) werden passiv gehalten ohne aktives Nachjustieren — zu klein, um Aufwand zu rechtfertigen, Totalverlust als möglicher Ausgang akzeptiert. Bei Einzelaktien gilt weiterhin: Einsatz raus bei ausreichendem Gewinn, Trailing Stop (20-25%) auf den Rest, bei Verlustpositionen zählt die ursprüngliche These statt eines Kursziels. Quartalsweiser Check der 10-15%-Gesamtgrenze; bei Annäherung an die Obergrenze wird zuerst der BTC-Sparplan reduziert, bevor bestehende Positionen angetastet werden.\n\nHome Bias / Pensionskasse (BLVK): Die BLVK (Pensionskasse für Berner Lehrpersonen) investiert selbst stark in die Schweiz - geschätzt ~60% des PK-Vermögens (Aktien 35.4% wovon ~1/3 CH, Immobilien 21.9% fast vollständig CH, Obligationen/Hypotheken 42.2% wovon ~2/3 CH). Das deckt meinen gewuenschten Home Bias bereits weitgehend ab, ohne mein Zutun. Konsequenz: SPI-Sparplan (Saxo) ist ein legitimer, sogar bevorzugter Kandidat zur Reduktion bei Budget-Engpaessen - nicht erst VT. Neue Prioritaet bei Kuerzung: 1. BTC/Krypto (Spass-Topf) 2. SPI-Sparplan 3. VT (Kern, nur als letzter Hebel).",
+  "stratNotes": "Spass-Topf (Einzelaktien + Krypto): 10-15% des Portfolios. BTC-Sparplan läuft weiter (aktuell CHF 200/Monat, Anpassung je nach Budgetlage), kleine Altcoin-Positionen (ETH, SOL, XRP) werden passiv gehalten ohne aktives Nachjustieren — zu klein, um Aufwand zu rechtfertigen, Totalverlust als möglicher Ausgang akzeptiert. Bei Einzelaktien gilt weiterhin: Einsatz raus bei ausreichendem Gewinn, Trailing Stop (20-25%) auf den Rest, bei Verlustpositionen zählt die ursprüngliche These statt eines Kursziels. Quartalsweiser Check der 10-15%-Gesamtgrenze; bei Annäherung an die Obergrenze wird zuerst der BTC-Sparplan reduziert, bevor bestehende Positionen angetastet werden.\n\nHome Bias / Pensionskasse (BLVK): Die BLVK (Pensionskasse für Berner Lehrpersonen) investiert selbst stark in die Schweiz - geschätzt ~60% des PK-Vermögens (Aktien 35.4% wovon ~1/3 CH, Immobilien 21.9% fast vollständig CH, Obligationen/Hypotheken 42.2% wovon ~2/3 CH). Das deckt meinen gewünschten Home Bias bereits weitgehend ab, ohne mein Zutun. Konsequenz: SPI-Sparplan (Saxo) ist ein legitimer, sogar bevorzugter Kandidat zur Reduktion bei Budget-Engpässen - nicht erst VT. Neue Priorität bei Kürzung: 1. BTC/Krypto (Spass-Topf) 2. SPI-Sparplan 3. VT (Kern, nur als letzter Hebel).",
   "salary": "7399",
   "ngIst": "3000",
   "ngZiel": "7000",
@@ -252,5 +252,5 @@
     "said": 6,
     "did": 4
   },
-  "updatedAt": 1787499930591
+  "updatedAt": 1787500188048
 }
