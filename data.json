@@ -1,0 +1,256 @@
+{
+  "snapshots": [
+    {
+      "id": "2023",
+      "label": "2023",
+      "accounts": {
+        "saeule3a": 7100,
+        "neonDepot": 9900,
+        "neonSparkonto": 1000,
+        "ibkr": 0,
+        "saxo": 0,
+        "raiffLohn": 3000,
+        "raiffSpar": 5000,
+        "krypto": 500
+      }
+    },
+    {
+      "id": "2024",
+      "label": "2024",
+      "accounts": {
+        "saeule3a": 15000,
+        "neonDepot": 14500,
+        "neonSparkonto": 3200,
+        "ibkr": 25500,
+        "saxo": 0,
+        "raiffLohn": 1000,
+        "raiffSpar": 7000,
+        "krypto": 8600
+      }
+    },
+    {
+      "id": "2025",
+      "label": "2025",
+      "accounts": {
+        "saeule3a": 22700,
+        "neonDepot": 15000,
+        "neonSparkonto": 3400,
+        "ibkr": 62600,
+        "saxo": 800,
+        "raiffLohn": 1000,
+        "raiffSpar": 5000,
+        "krypto": 9700
+      }
+    },
+    {
+      "id": "2026",
+      "label": "2026",
+      "accounts": {
+        "saeule3a": 35000,
+        "neonDepot": 1100,
+        "neonSparkonto": 3200,
+        "ibkr": 107900,
+        "saxo": 3400,
+        "raiffLohn": 1000,
+        "raiffSpar": 3000,
+        "krypto": 11400
+      }
+    }
+  ],
+  "budget": [
+    {
+      "id": 1,
+      "name": "Miete + Essen",
+      "amount": 1342,
+      "cat": "fix",
+      "color": "#E84646"
+    },
+    {
+      "id": 2,
+      "name": "Steuern",
+      "amount": 1300,
+      "cat": "fix",
+      "color": "#F06E6E"
+    },
+    {
+      "id": 3,
+      "name": "Krankenkasse",
+      "amount": 398,
+      "cat": "fix",
+      "color": "#F99090"
+    },
+    {
+      "id": 4,
+      "name": "Handy + Internet",
+      "amount": 27,
+      "cat": "fix",
+      "color": "#FCBBBB"
+    },
+    {
+      "id": 6,
+      "name": "Interactive Brokers",
+      "amount": 2300,
+      "cat": "invest",
+      "color": "#059669"
+    },
+    {
+      "id": 5,
+      "name": "Säule 3a",
+      "amount": 600,
+      "cat": "invest",
+      "color": "#00BF89"
+    },
+    {
+      "id": 7,
+      "name": "Saxo Bank",
+      "amount": 400,
+      "cat": "invest",
+      "color": "#34D399"
+    },
+    {
+      "id": 8,
+      "name": "Relai (Krypto)",
+      "amount": 200,
+      "cat": "invest",
+      "color": "#6EE7B7"
+    },
+    {
+      "id": 9,
+      "name": "Ferien",
+      "amount": 400,
+      "cat": "leben",
+      "color": "#F0A020"
+    },
+    {
+      "id": 10,
+      "name": "Freizeit / Konsum",
+      "amount": 200,
+      "cat": "leben",
+      "color": "#F5C842"
+    }
+  ],
+  "principles": [
+    "YOU DON'T BEAT THE MARKET!!!",
+    "Basisinvestment:  VT + SPI",
+    "Krypto-Anteil 5–10%: ab 15% umschichten",
+    "Einzelaktien nur mit Spielgeld — max. 10%",
+    "Säule 3a jährlich voll ausschöpfen (möglichst Anfang Jahr)",
+    "Zusatzeinnahmen: 1. Pulverreserve auffüllen 2. freie Hand",
+    "Keine Meme-Coins oder hochspekulative Aktien",
+    "Monatliche Mindest-Investitionsquote: 1'500 CHF"
+  ],
+  "reminders": [
+    "31. Dezember: Screenshot aller Krypto-Positionen!",
+    "Man geht nicht in die Ferien um zu sparen. Das Leben geniessen."
+  ],
+  "goals": [
+    {
+      "id": 1,
+      "text": "160'000 CHF investiert",
+      "done": false
+    },
+    {
+      "id": 2,
+      "text": "Neue Sportart angehen",
+      "done": true
+    },
+    {
+      "id": 3,
+      "text": "6 Blogartikel schreiben",
+      "done": false
+    },
+    {
+      "id": 4,
+      "text": "5 Bücher lesen",
+      "done": false
+    },
+    {
+      "id": 5,
+      "text": "Notgroschen auf 7'000 CHF aufstocken",
+      "done": false
+    }
+  ],
+  "saeule3a": [
+    {
+      "id": 1,
+      "nr": "1.",
+      "grenze": "32'000",
+      "alter": "–"
+    },
+    {
+      "id": 2,
+      "nr": "2.",
+      "grenze": "30'000",
+      "alter": "31–34"
+    },
+    {
+      "id": 3,
+      "nr": "3.",
+      "grenze": "42'000",
+      "alter": "35–40"
+    },
+    {
+      "id": 4,
+      "nr": "4.",
+      "grenze": "60'000",
+      "alter": "41–48"
+    },
+    {
+      "id": 5,
+      "nr": "5.",
+      "grenze": "–",
+      "alter": "–65"
+    }
+  ],
+  "dips": [
+    {
+      "id": 1,
+      "nr": "1.",
+      "trigger": "−10%",
+      "amount": 2000,
+      "status": "Warten"
+    },
+    {
+      "id": 2,
+      "nr": "2.",
+      "trigger": "−15%",
+      "amount": 1750,
+      "status": "Warten"
+    },
+    {
+      "id": 3,
+      "nr": "3.",
+      "trigger": "−30%",
+      "amount": 1250,
+      "status": "Warten"
+    }
+  ],
+  "stratRules": [
+    "Markt steigt → normale Sparquote beibehalten",
+    "Markt fällt → Sparquote erhöhen oder nachkaufen",
+    "3a-Strategie ist langfristig — nicht kurzfristig ändern",
+    "400 CHF SPI fix: bei höherer Miete → IBKR-Sparplan + BTC-Sparplan reduzieren"
+  ],
+  "noteHints": [
+    "Transfer = Deposit",
+    "Interests = Zinsen",
+    "Fehlende Kategorien: Wechselkurs, Bruttobetrag, Gegenkonto",
+    "Datum anpassen vor Import"
+  ],
+  "notizen": "",
+  "dipNotes": "",
+  "stratNotes": "Spass-Topf (Einzelaktien + Krypto): 10-15% des Portfolios. BTC-Sparplan läuft weiter (aktuell CHF 200/Monat, Anpassung je nach Budgetlage), kleine Altcoin-Positionen (ETH, SOL, XRP) werden passiv gehalten ohne aktives Nachjustieren — zu klein, um Aufwand zu rechtfertigen, Totalverlust als möglicher Ausgang akzeptiert. Bei Einzelaktien gilt weiterhin: Einsatz raus bei ausreichendem Gewinn, Trailing Stop (20-25%) auf den Rest, bei Verlustpositionen zählt die ursprüngliche These statt eines Kursziels. Quartalsweiser Check der 10-15%-Gesamtgrenze; bei Annäherung an die Obergrenze wird zuerst der BTC-Sparplan reduziert, bevor bestehende Positionen angetastet werden.",
+  "salary": "7399",
+  "ngIst": "3000",
+  "ngZiel": "7000",
+  "pvAmt": "5000",
+  "dark": true,
+  "activeSnapId": "2026",
+  "ids": {
+    "bid": 11,
+    "gid": 6,
+    "said": 6,
+    "did": 4
+  },
+  "updatedAt": 1787497368123
+}
