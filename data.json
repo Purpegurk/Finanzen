@@ -49,7 +49,7 @@
         "saeule3a": 35000,
         "neonDepot": 1100,
         "neonSparkonto": 3200,
-        "ibkr": 107900,
+        "ibkr": 110400,
         "saxo": 3400,
         "raiffLohn": 1000,
         "raiffSpar": 3000,
@@ -147,7 +147,7 @@
     {
       "id": 1,
       "text": "160'000 CHF investiert",
-      "done": false
+      "done": true
     },
     {
       "id": 2,
@@ -252,5 +252,5 @@
     "said": 6,
     "did": 4
   },
-  "updatedAt": 1787642530494
+  "updatedAt": 1787649734010
 }
