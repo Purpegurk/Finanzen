@@ -89,7 +89,7 @@
     {
       "id": 6,
       "name": "Interactive Brokers",
-      "amount": 2300,
+      "amount": 2500,
       "cat": "invest",
       "color": "#059669"
     },
@@ -103,7 +103,7 @@
     {
       "id": 7,
       "name": "Saxo Bank",
-      "amount": 400,
+      "amount": 200,
       "cat": "invest",
       "color": "#34D399"
     },
@@ -252,5 +252,5 @@
     "said": 6,
     "did": 4
   },
-  "updatedAt": 1787641991173
+  "updatedAt": 1787642530494
 }
