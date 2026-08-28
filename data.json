@@ -48,7 +48,7 @@
       "accounts": {
         "saeule3a": 34600,
         "neonDepot": 1100,
-        "neonSparkonto": 3600,
+        "neonSparkonto": 3800,
         "ibkr": 111000,
         "saxo": 3600,
         "raiffLohn": 1000,
@@ -252,5 +252,5 @@
     "said": 6,
     "did": 4
   },
-  "updatedAt": 1787842507449
+  "updatedAt": 1787930084584
 }
