@@ -58,16 +58,76 @@
     }
   ],
   "budget": [
-    { "id": 1, "name": "Miete + Essen", "amount": 1690, "cat": "fix", "color": "#E84646" },
-    { "id": 2, "name": "Steuern", "amount": 1300, "cat": "fix", "color": "#F06E6E" },
-    { "id": 3, "name": "Krankenkasse", "amount": 398, "cat": "fix", "color": "#F99090" },
-    { "id": 4, "name": "Handy + Internet", "amount": 27, "cat": "fix", "color": "#FCBBBB" },
-    { "id": 6, "name": "Interactive Brokers", "amount": 2500, "cat": "invest", "color": "#059669" },
-    { "id": 5, "name": "Säule 3a", "amount": 600, "cat": "invest", "color": "#00BF89" },
-    { "id": 7, "name": "Saxo Bank", "amount": 200, "cat": "invest", "color": "#34D399" },
-    { "id": 8, "name": "Relai (Krypto)", "amount": 200, "cat": "invest", "color": "#6EE7B7" },
-    { "id": 9, "name": "Ferien", "amount": 400, "cat": "leben", "color": "#F0A020" },
-    { "id": 10, "name": "Freizeit / Konsum", "amount": 200, "cat": "leben", "color": "#F5C842" }
+    {
+      "id": 1,
+      "name": "Miete + Essen",
+      "amount": 1690,
+      "cat": "fix",
+      "color": "#E84646"
+    },
+    {
+      "id": 2,
+      "name": "Steuern",
+      "amount": 1300,
+      "cat": "fix",
+      "color": "#F06E6E"
+    },
+    {
+      "id": 3,
+      "name": "Krankenkasse",
+      "amount": 398,
+      "cat": "fix",
+      "color": "#F99090"
+    },
+    {
+      "id": 4,
+      "name": "Handy + Internet",
+      "amount": 27,
+      "cat": "fix",
+      "color": "#FCBBBB"
+    },
+    {
+      "id": 6,
+      "name": "Interactive Brokers",
+      "amount": 2500,
+      "cat": "invest",
+      "color": "#059669"
+    },
+    {
+      "id": 5,
+      "name": "Säule 3a",
+      "amount": 600,
+      "cat": "invest",
+      "color": "#00BF89"
+    },
+    {
+      "id": 7,
+      "name": "Saxo Bank",
+      "amount": 200,
+      "cat": "invest",
+      "color": "#34D399"
+    },
+    {
+      "id": 8,
+      "name": "Relai (Krypto)",
+      "amount": 200,
+      "cat": "invest",
+      "color": "#6EE7B7"
+    },
+    {
+      "id": 9,
+      "name": "Ferien",
+      "amount": 400,
+      "cat": "leben",
+      "color": "#F0A020"
+    },
+    {
+      "id": 10,
+      "name": "Freizeit / Konsum",
+      "amount": 200,
+      "cat": "leben",
+      "color": "#F5C842"
+    }
   ],
   "principles": [
     "Hauptsächlich in Vanguard Total World Stock Index (VT) + Swiss SPI investieren",
@@ -79,6 +139,99 @@
     "31. Dezember: Screenshot aller Krypto-Positionen!",
     "Man geht nicht in die Ferien um zu sparen. Das Leben geniessen."
   ],
+  "goals": [
+    {
+      "id": 1,
+      "text": "160'000 CHF investiert",
+      "done": true
+    },
+    {
+      "id": 2,
+      "text": "Neue Sportart angehen",
+      "done": true
+    },
+    {
+      "id": 3,
+      "text": "6 Blogartikel schreiben",
+      "done": false
+    },
+    {
+      "id": 4,
+      "text": "5 Bücher lesen",
+      "done": false
+    },
+    {
+      "id": 5,
+      "text": "Notgroschen auf 7'000 CHF aufstocken",
+      "done": false
+    }
+  ],
+  "saeule3a": [
+    {
+      "id": 1,
+      "nr": "1.",
+      "grenze": "32'000",
+      "alter": "–"
+    },
+    {
+      "id": 2,
+      "nr": "2.",
+      "grenze": "30'000",
+      "alter": "31–34"
+    },
+    {
+      "id": 3,
+      "nr": "3.",
+      "grenze": "42'000",
+      "alter": "35–40"
+    },
+    {
+      "id": 4,
+      "nr": "4.",
+      "grenze": "60'000",
+      "alter": "41–48"
+    },
+    {
+      "id": 5,
+      "nr": "5.",
+      "grenze": "–",
+      "alter": "–65"
+    }
+  ],
+  "dips": [
+    {
+      "id": 1,
+      "nr": "1.",
+      "trigger": "−10%",
+      "amount": 2000,
+      "status": "Warten"
+    },
+    {
+      "id": 2,
+      "nr": "2.",
+      "trigger": "−15%",
+      "amount": 1750,
+      "status": "Warten"
+    },
+    {
+      "id": 3,
+      "nr": "3.",
+      "trigger": "−30%",
+      "amount": 1250,
+      "status": "Warten"
+    }
+  ],
+  "stratRules": [
+    "Markt steigt → normale Sparquote beibehalten",
+    "Markt fällt → Sparquote erhöhen oder nachkaufen",
+    "3a-Strategie ist langfristig — nicht kurzfristig ändern"
+  ],
+  "noteHints": [
+    "Transfer = Deposit",
+    "Interests = Zinsen",
+    "Fehlende Kategorien: Wechselkurs, Bruttobetrag, Gegenkonto",
+    "Datum anpassen vor Import"
+  ],
   "prioSurplus": [
     "Pulverreserve auffüllen",
     "Freie Hand — Rest frei investierbar"
@@ -87,11 +240,6 @@
     "BTC-Sparplan reduzieren",
     "SPI-Sparplan reduzieren",
     "VT (Kern) — nur als letzter Hebel"
-  ],
-  "stratRules": [
-    "Markt steigt → normale Sparquote beibehalten",
-    "Markt fällt → Sparquote erhöhen oder nachkaufen",
-    "3a-Strategie ist langfristig — nicht kurzfristig ändern"
   ],
   "stratNoteEntries": [
     {
@@ -102,31 +250,6 @@
       "title": "Home Bias — warum SPI zurückstehen kann",
       "text": "Home Bias / Pensionskasse (BLVK): Die BLVK (Pensionskasse für Berner Lehrpersonen) investiert selbst stark in die Schweiz – geschätzt ~60% des PK-Vermögens (Aktien 35.4% wovon ~1/3 CH, Immobilien 21.9% fast vollständig CH, Obligationen/Hypotheken 42.2% wovon ~2/3 CH). Das deckt meinen gewünschten Home Bias bereits weitgehend ab, ohne mein Zutun. Konsequenz: SPI-Sparplan (Saxo) ist ein legitimer, sogar bevorzugter Kandidat zur Reduktion bei Budget-Engpässen – nicht erst VT."
     }
-  ],
-  "goals": [
-    { "id": 1, "text": "160'000 CHF investiert", "done": true },
-    { "id": 2, "text": "Neue Sportart angehen", "done": true },
-    { "id": 3, "text": "6 Blogartikel schreiben", "done": false },
-    { "id": 4, "text": "5 Bücher lesen", "done": false },
-    { "id": 5, "text": "Notgroschen auf 7'000 CHF aufstocken", "done": false }
-  ],
-  "saeule3a": [
-    { "id": 1, "nr": "1.", "grenze": "32'000", "alter": "–" },
-    { "id": 2, "nr": "2.", "grenze": "30'000", "alter": "31–34" },
-    { "id": 3, "nr": "3.", "grenze": "42'000", "alter": "35–40" },
-    { "id": 4, "nr": "4.", "grenze": "60'000", "alter": "41–48" },
-    { "id": 5, "nr": "5.", "grenze": "–", "alter": "–65" }
-  ],
-  "dips": [
-    { "id": 1, "nr": "1.", "trigger": "−10%", "amount": 2000, "status": "Warten" },
-    { "id": 2, "nr": "2.", "trigger": "−15%", "amount": 1750, "status": "Warten" },
-    { "id": 3, "nr": "3.", "trigger": "−30%", "amount": 1250, "status": "Warten" }
-  ],
-  "noteHints": [
-    "Transfer = Deposit",
-    "Interests = Zinsen",
-    "Fehlende Kategorien: Wechselkurs, Bruttobetrag, Gegenkonto",
-    "Datum anpassen vor Import"
   ],
   "notizen": "",
   "dipNotes": "",
@@ -142,5 +265,5 @@
     "said": 6,
     "did": 4
   },
-  "updatedAt": 1788032327211
+  "updatedAt": 1788032848046
 }
