@@ -223,7 +223,7 @@
   ],
   "stratRules": [
     "Markt steigt → normale Sparquote beibehalten",
-    "Markt fällt → Sparquote erhöhen oder nachkaufen",
+    "Markt fällt → Sparquote erhöhen oder nachkaufen (falls möglich)",
     "3a-Strategie ist langfristig — nicht kurzfristig ändern"
   ],
   "noteHints": [
@@ -265,5 +265,5 @@
     "said": 6,
     "did": 4
   },
-  "updatedAt": 1788032848046
+  "updatedAt": 1788090840008
 }
