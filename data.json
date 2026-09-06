@@ -245,7 +245,7 @@
     {
       "title": "Spass-Topf — Verkaufsregeln",
       "text": "Spass-Topf (Einzelaktien + Krypto): 10-15% des Portfolios. BTC-Sparplan läuft weiter (aktuell CHF 200/Monat, Anpassung je nach Budgetlage), kleine Altcoin-Positionen (ETH, SOL, XRP) werden passiv gehalten ohne aktives Nachjustieren – zu klein, um Aufwand zu rechtfertigen, Totalverlust als möglicher Ausgang akzeptiert. Bei Einzelaktien gilt weiterhin: Einsatz raus bei ausreichendem Gewinn, Trailing Stop (20-25%) auf den Rest, bei Verlustpositionen zählt die ursprüngliche These statt eines Kursziels. Quartalsweiser Check der 10-15%-Gesamtgrenze; bei Annäherung an die Obergrenze wird zuerst der BTC-Sparplan reduziert, bevor bestehende Positionen angetastet werden.",
-      "_open": true
+      "_open": false
     },
     {
       "title": "Home Bias — warum SPI zurückstehen kann",
@@ -254,7 +254,7 @@
   ],
   "notizen": "",
   "dipNotes": "",
-  "salary": "7751",
+  "salary": "7750",
   "ngIst": "3000",
   "ngZiel": "7000",
   "pvAmt": "0",
@@ -266,5 +266,5 @@
     "said": 6,
     "did": 4
   },
-  "updatedAt": 1788686998768
+  "updatedAt": 1788687088118
 }
