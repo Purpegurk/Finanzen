@@ -256,7 +256,7 @@
   "salary": "7751",
   "ngIst": "3000",
   "ngZiel": "7000",
-  "pvAmt": "5000",
+  "pvAmt": "0",
   "dark": true,
   "activeSnapId": "2026",
   "ids": {
@@ -265,5 +265,5 @@
     "said": 6,
     "did": 4
   },
-  "updatedAt": 1788090840008
+  "updatedAt": 1788686974826
 }
