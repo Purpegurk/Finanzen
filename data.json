@@ -81,8 +81,8 @@
     },
     {
       "id": 4,
-      "name": "Handy + Internet",
-      "amount": 27,
+      "name": "Subscriptions",
+      "amount": 46,
       "cat": "fix",
       "color": "#FCBBBB"
     },
@@ -266,5 +266,5 @@
     "said": 6,
     "did": 4
   },
-  "updatedAt": 1788687088118
+  "updatedAt": 1788708588885
 }
