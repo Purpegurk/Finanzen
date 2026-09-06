@@ -81,7 +81,7 @@
     },
     {
       "id": 4,
-      "name": "Subscriptions",
+      "name": "Abos",
       "amount": 46,
       "cat": "fix",
       "color": "#FCBBBB"
@@ -266,5 +266,5 @@
     "said": 6,
     "did": 4
   },
-  "updatedAt": 1788708588885
+  "updatedAt": 1788708676897
 }
