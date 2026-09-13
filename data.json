@@ -46,7 +46,7 @@
       "id": "2026",
       "label": "2026",
       "accounts": {
-        "saeule3a": 34600,
+        "saeule3a": 34500,
         "neonDepot": 1000,
         "neonSparkonto": 3800,
         "ibkr": 111500,
@@ -266,5 +266,5 @@
     "said": 6,
     "did": 4
   },
-  "updatedAt": 1789316844312
+  "updatedAt": 1789316937483
 }
