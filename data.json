@@ -47,13 +47,13 @@
       "label": "2026",
       "accounts": {
         "saeule3a": 34600,
-        "neonDepot": 1100,
+        "neonDepot": 1000,
         "neonSparkonto": 3800,
-        "ibkr": 111000,
-        "saxo": 3600,
+        "ibkr": 111500,
+        "saxo": 3500,
         "raiffLohn": 1000,
         "raiffSpar": 3000,
-        "krypto": 12100
+        "krypto": 11900
       }
     }
   ],
@@ -266,5 +266,5 @@
     "said": 6,
     "did": 4
   },
-  "updatedAt": 1789239076514
+  "updatedAt": 1789316844312
 }
