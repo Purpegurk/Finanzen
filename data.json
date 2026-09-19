@@ -53,7 +53,7 @@
         "saxo": 3500,
         "raiffLohn": 1000,
         "raiffSpar": 3000,
-        "krypto": 11900
+        "krypto": 12800
       }
     }
   ],
@@ -266,5 +266,5 @@
     "said": 6,
     "did": 4
   },
-  "updatedAt": 1789830420983
+  "updatedAt": 1789830505700
 }
