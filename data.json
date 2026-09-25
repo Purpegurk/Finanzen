@@ -61,7 +61,7 @@
     {
       "id": 1,
       "name": "Miete + Essen",
-      "amount": 1690,
+      "amount": 1543,
       "cat": "fix",
       "color": "#E84646"
     },
@@ -266,5 +266,5 @@
     "said": 6,
     "did": 4
   },
-  "updatedAt": 1789830685915
+  "updatedAt": 1790355624856
 }
