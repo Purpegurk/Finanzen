@@ -217,7 +217,7 @@
     {
       "id": 1,
       "text": "160'000 CHF investiert",
-      "done": true
+      "done": false
     },
     {
       "id": 2,
@@ -340,5 +340,5 @@
     "said": 6,
     "did": 4
   },
-  "updatedAt": 1795183230564
+  "updatedAt": 1795184220591
 }
