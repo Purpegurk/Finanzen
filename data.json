@@ -42,7 +42,7 @@
     },
     {
       "key": "raiffLohn",
-      "name": "Raiffeisen Lohn",
+      "name": "Raiffeisen Lohnkonto",
       "color": "#F0A020",
       "invest": false,
       "crypto": false,
@@ -50,7 +50,7 @@
     },
     {
       "key": "raiffSpar",
-      "name": "Raiffeisen Spar",
+      "name": "Raiffeisen Sparkonto",
       "color": "#F5C842",
       "invest": false,
       "crypto": false,
@@ -340,5 +340,5 @@
     "said": 6,
     "did": 4
   },
-  "updatedAt": 1795183050382
+  "updatedAt": 1795183230564
 }
