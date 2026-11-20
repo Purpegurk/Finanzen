@@ -54,7 +54,7 @@
       "color": "#F5C842",
       "invest": false,
       "crypto": false,
-      "archived": false
+      "archived": true
     },
     {
       "key": "krypto",
@@ -125,9 +125,9 @@
         "neonSparkonto": 3100,
         "ibkr": 113000,
         "saxo": 4100,
-        "raiffLohn": 1000,
+        "raiffLohn": 500,
         "raiffSpar": 3000,
-        "krypto": 12100,
+        "krypto": 9800,
         "acc_mwp1h17zyzkw": 2000
       }
     }
@@ -341,5 +341,5 @@
     "said": 6,
     "did": 4
   },
-  "updatedAt": 1795182780368
+  "updatedAt": 1795182870379
 }
