@@ -5,56 +5,56 @@
       "name": "Säule 3a",
       "color": "#00BF89",
       "invest": true,
-      "archived": false,
-      "crypto": false
+      "crypto": false,
+      "archived": false
     },
     {
       "key": "neonDepot",
       "name": "Neon Depot",
       "color": "#3B7EFF",
       "invest": true,
-      "archived": false,
-      "crypto": false
+      "crypto": false,
+      "archived": false
     },
     {
       "key": "neonSparkonto",
       "name": "Neon Sparkonto",
       "color": "#7DABFF",
       "invest": false,
-      "archived": false,
-      "crypto": false
+      "crypto": false,
+      "archived": false
     },
     {
       "key": "ibkr",
       "name": "Interactive Brokers",
       "color": "#8B5CF6",
       "invest": true,
-      "archived": false,
-      "crypto": false
+      "crypto": false,
+      "archived": false
     },
     {
       "key": "saxo",
       "name": "Saxo Bank",
       "color": "#A78BFA",
       "invest": true,
-      "archived": false,
-      "crypto": false
+      "crypto": false,
+      "archived": false
     },
     {
       "key": "raiffLohn",
       "name": "Raiffeisen Lohn",
       "color": "#F0A020",
       "invest": false,
-      "archived": false,
-      "crypto": false
+      "crypto": false,
+      "archived": false
     },
     {
       "key": "raiffSpar",
       "name": "Raiffeisen Spar",
       "color": "#F5C842",
       "invest": false,
-      "archived": false,
-      "crypto": false
+      "crypto": false,
+      "archived": false
     },
     {
       "key": "krypto",
@@ -62,6 +62,14 @@
       "color": "#F97316",
       "invest": true,
       "crypto": true,
+      "archived": false
+    },
+    {
+      "key": "acc_mwp1h17zyzkw",
+      "name": "Bank WIR",
+      "color": "#F59E0B",
+      "invest": false,
+      "crypto": false,
       "archived": false
     }
   ],
@@ -119,7 +127,8 @@
         "saxo": 4100,
         "raiffLohn": 1000,
         "raiffSpar": 3000,
-        "krypto": 12100
+        "krypto": 12100,
+        "acc_mwp1h17zyzkw": 2000
       }
     }
   ],
@@ -332,5 +341,5 @@
     "said": 6,
     "did": 4
   },
-  "updatedAt": 1795182116397
+  "updatedAt": 1795182780368
 }
