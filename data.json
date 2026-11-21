@@ -278,7 +278,7 @@
       "nr": "1.",
       "trigger": "−10%",
       "amount": 2000,
-      "status": "Warten"
+      "status": "Ausgeführt"
     },
     {
       "id": 2,
@@ -329,7 +329,7 @@
   "notizen": "Ab Januar 100.- mehr in VT, da Sparplan Minus bei Lohn, auf neues Säule 3a Konto einzahlen\n",
   "dipNotes": "",
   "salary": "7750",
-  "ngIst": "3000",
+  "ngIst": "2000",
   "ngZiel": "7000",
   "pvAmt": "700",
   "dark": true,
@@ -340,5 +340,5 @@
     "said": 6,
     "did": 4
   },
-  "updatedAt": 1795184220591
+  "updatedAt": 1795266469278
 }
